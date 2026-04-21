@@ -1,0 +1,8 @@
+{
+    "supported_versions": {},
+    "summary": "HTML sanitizer",
+    "status": "green",
+    "notes": "I attempted to import the `html-sanitizer` package in Pyodide. I used the following code:\n\n```\n# Simple Pyodide import test for the html-sanitizer package.\n# Record the version of Pyodide being used.\nimport sys\nprint(f\"Using {sys.version}\")\n# Record the browser user agent.\nimport js\nprint(f\"Browser user agent: {js.navigator.userAgent}\")\n# Micropip is the package manager for Pyodide.\nimport micropip\n# Install the package via micropip.\nawait micropip.install(\"html-sanitizer\")\n# Now try to import it!\nimport html_sanitizer\n# If we reach this point, the import was successful.\nprint(\"\u00e2\u009c\u0085 Successfully imported html-sanitizer!\")\n# If there was an error, it will be shown below in red.\n# Now add some code of your own to exercise and test the package!\n# Re-run the code and tell us what you find in the feedback form below. \u00f0\u009f\u0092\u0090\n```\n\nHere's a paste of the output:\n\nUsing 3.13.2 (main, Jan  7 2026, 11:46:49) [Clang 21.0.0git (https:/github.com/llvm/llvm-project 2f05451198e2f222ec66cec489\nBrowser user agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/145.0.0.0 Safari/537.36\nLoading beautifulsoup4, lxml, soupsieve, typing-extensions\nLoaded beautifulsoup4, lxml, soupsieve, typing-extensions\n\u00e2\u009c\u0085 Successfully imported html-sanitizer!\n\nMy experience was: \n\nThis is an easy test/form to use\n",
+    "updated_by": "Community contribution via Google Forms",
+    "updated_at": "2026-03-26T21:35:15+00:00"
+}
