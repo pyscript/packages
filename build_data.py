@@ -39,6 +39,7 @@ import json
 import datetime
 import csv
 import os
+import tomllib
 from io import StringIO
 
 
@@ -61,11 +62,42 @@ PYSCRIPT_PYODIDE_MAP = {
   "2025.10.3": "0.29.0",
   "2025.11.1": "0.29.0",
   "2026.1.1": "0.29.1",
+  "2026.2.1": "0.29.3",
+  "2026.3.1": "0.29.3",
 }
 
 PYODIDE_PYSCRIPT_MAP = {
   v: k for k, v in PYSCRIPT_PYODIDE_MAP.items()
 }
+
+
+def load_examples(package_name):
+    # Load example code and config for a package from
+    # ./examples/<package_name>/.
+    # Each subdirectory contains a config.toml and code.py. Returns a list
+    # of dicts sorted by subdirectory name, or an empty list if no examples
+    # directory exists for the package.
+    examples_dir = os.path.join("examples", package_name)
+    if not os.path.isdir(examples_dir):
+        return []
+    entries = sorted(os.listdir(examples_dir))
+    examples = []
+    for entry in entries:
+        if entry.startswith("."):
+            # Skip hidden directories such as .DS_Store.
+            continue
+        subdir = os.path.join(examples_dir, entry)
+        if not os.path.isdir(subdir):
+            continue
+        title = entry.replace("_", " ").title()
+        with open(os.path.join(subdir, "config.toml"), "rb") as f:
+            config = tomllib.load(f)
+        with open(os.path.join(subdir, "code.py"), "r") as f:
+            code = f.read()
+        examples.append(
+            {"title": title, "config": config, "code": code}
+        )
+    return examples
 
 
 #############################################
@@ -126,6 +158,7 @@ for row in reader:
         data["notes"] = notes
     data["updated_by"] = "Community contribution via Google Forms"
     data["updated_at"] = timestamp.isoformat()
+    data["examples"] = load_examples(package_name)
     print(
         f"Updating package '{package_name}' with community status '{status}'"
     )
@@ -189,21 +222,34 @@ for package_name, data in packages.items():
         updated_at = existing_data.get("updated_at", updated_at)
     except FileNotFoundError:
         notes = ""
-    # Check if the supported versions of Pyodide have changed; if not, skip
-    # rewriting the file.
+    # Load examples for this package so we can detect changes and include
+    # them in the output.
+    examples = load_examples(package_name)
+    # Check if the supported Pyodide versions or examples have changed; if
+    # neither has, skip rewriting the file.
     if os.path.exists(filename):
         with open(filename, "r") as f:
             existing_data = json.load(f)
-        if existing_data.get("pyodide_versions", {}) == data:
+        versions_unchanged = (
+            existing_data.get("pyodide_versions", {}) == data
+        )
+        examples_unchanged = (
+            existing_data.get("examples", []) == examples
+        )
+        if versions_unchanged and examples_unchanged:
             print(
-                f"No changes in supported versions for package '{package_name}'. Skipping."
+                f"No changes in supported versions or examples for package '{package_name}'. Skipping."
             )
             continue
-        else:
+        elif not versions_unchanged:
             print(
                 f"Changes detected in supported Pyodide versions for package '{package_name}'. Updating."
             )
             notes = ""  # Reset notes to repopulate with updated info.
+        else:
+            print(
+                f"Changes detected in examples for package '{package_name}'. Updating."
+            )
     # Check if the latest release of Pyodide supports this package.
     has_latest = True
     if latest_release not in data:
@@ -263,6 +309,7 @@ Pyodide version: package name (version) (PyScript Version)
         "updated_by": updated_by,
         "updated_at": updated_at,
         "summary": summary,
+        "examples": examples,
     }
     filename = os.path.join("api", "package", f"{package_name}.json")
     print(f"Writing data for package '{package_name}' to '{filename}'")
@@ -324,7 +371,7 @@ with open(os.path.join("api", "top_100_pypi_packages.json"), "w") as f:
 print("Generated top_100_pypi_packages.json")
 
 #############################################
-# Step 4: Record last run time and output all.json
+# Step 4: Record last run time and output all.json and examples.json
 #############################################
 
 # Record when the script was last run.
@@ -346,3 +393,10 @@ for filename in os.listdir(os.path.join("api", "package")):
 with open(os.path.join("api", "all.json"), "w") as f:
     json.dump(all_packages, f, indent=4)
 print("Generated api/all.json")
+
+# Generate a final examples.json file in the API directory containing the list
+# of packages with examples.
+examples = [package_name for package_name, package in all_packages.items() if package.get("examples")]
+with open(os.path.join("api", "examples.json"), "w") as f:
+    json.dump(examples, f, indent=4)
+print("Generated api/examples.json")
