@@ -11,8 +11,15 @@ code and resolve to the PyScript equivalents:
 
 import sys
 import types
-from pyscript import HTML, display
+import js
+from pyscript import window, HTML, display as _display
 
+# Make the standard JavaScript alert function available as js.alert because
+# this code is run in a web worker (where alert is not available).
+js.alert = window.alert
+
+def display(*args, **kwargs):
+  return _display(*args, **kwargs, target=__pyscript_display_target__)
 
 # Standard dynamic module creation and registration in sys.modules to shim
 # IPython's display API onto PyScript. ;-)
