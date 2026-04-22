@@ -74,29 +74,53 @@ PYODIDE_PYSCRIPT_MAP = {
 def load_examples(package_name):
     # Load example code and config for a package from
     # ./examples/<package_name>/.
-    # Each subdirectory contains a config.toml and code.py. Returns a list
-    # of dicts sorted by subdirectory name, or an empty list if no examples
-    # directory exists for the package.
+    # Each subdirectory contains a config.toml, a code.py and optionally a
+    # setup.py. An optional order.json at the package root specifies the
+    # order of examples; subdirectories not listed there are appended
+    # alphabetically. Returns a list of dicts, or an empty list if no
+    # examples directory exists for the package.
     examples_dir = os.path.join("examples", package_name)
     if not os.path.isdir(examples_dir):
         return []
-    entries = sorted(os.listdir(examples_dir))
+    # Collect candidate subdirectory names, skipping hidden entries and
+    # non-directories.
+    available = sorted(
+        entry for entry in os.listdir(examples_dir)
+        if not entry.startswith(".")
+        and os.path.isdir(os.path.join(examples_dir, entry))
+    )
+    # Determine the ordering: order.json if present, otherwise alphabetical.
+    order_path = os.path.join(examples_dir, "order.json")
+    if os.path.exists(order_path):
+        with open(order_path, "r") as f:
+            ordered = json.load(f)
+        missing = [name for name in ordered if name not in available]
+        if missing:
+            raise ValueError(
+                f"order.json for '{package_name}' references "
+                f"missing subdirectories: {missing}"
+            )
+        # Append any subdirectories not mentioned in order.json in
+        # alphabetical order.
+        extras = [name for name in available if name not in ordered]
+        entries = list(ordered) + extras
+    else:
+        entries = available
     examples = []
     for entry in entries:
-        if entry.startswith("."):
-            # Skip hidden directories such as .DS_Store.
-            continue
         subdir = os.path.join(examples_dir, entry)
-        if not os.path.isdir(subdir):
-            continue
         title = entry.replace("_", " ").title()
         with open(os.path.join(subdir, "config.toml"), "rb") as f:
             config = tomllib.load(f)
         with open(os.path.join(subdir, "code.py"), "r") as f:
             code = f.read()
-        examples.append(
-            {"title": title, "config": config, "code": code}
-        )
+        example = {"title": title, "config": config, "code": code}
+        # setup.py is optional; only include the key if the file exists.
+        setup_path = os.path.join(subdir, "setup.py")
+        if os.path.exists(setup_path):
+            with open(setup_path, "r") as f:
+                example["setup"] = f.read()
+        examples.append(example)
     return examples
 
 
