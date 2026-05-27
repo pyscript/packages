@@ -1,1 +1,1 @@
-Nicholas H.Tollervey (ntoll@ntoll.org / ntollervey@anaconda.com)
+Nicholas H.Tollervey (ntollervey@anaconda.com)

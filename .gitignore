@@ -110,3 +110,9 @@ venv.bak/
 
 # vim
 *.swp
+
+# Prompts
+prompts/
+
+# Example manifests
+examples/_*.json
