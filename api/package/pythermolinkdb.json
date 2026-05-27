@@ -1,0 +1,9 @@
+{
+    "supported_versions": {},
+    "summary": "PyThermoLinkDB is a Python package providing a robust and efficient interface between `PyThermoDB` and other applications.",
+    "status": "green",
+    "notes": "I attempted to import the `pythermolinkdb` package in Pyodide. I used the following code:\n\n```\n# Simple Pyodide import test for the pythermolinkdb package.\n# Record the version of Pyodide being used.\nimport sys\nprint(f\"Using {sys.version}\")\n# Record the browser user agent.\nimport js\nprint(f\"Browser user agent: {js.navigator.userAgent}\")\n# Micropip is the package manager for Pyodide.\nimport micropip\n# Install the package via micropip.\nawait micropip.install(\"pythermolinkdb\")\n# Now try to import it!\nimport pyThermoLinkDB\n# If we reach this point, the import was successful.\nprint(\"\u00e2\u009c\u0085 Successfully imported pythermolinkdb!\")\n# If there was an error, it will be shown below in red.\n# Now add some code of your own to exercise and test the package!\n# Re-run the code and tell us what you find in the feedback form below. \u00f0\u009f\u0092\u0090\n```\n\nHere's a paste of the output:\n\nUsing 3.13.2 (main, Jan  7 2026, 11:46:49) [Clang 21.0.0git (https:/github.com/llvm/llvm-project 2f05451198e2f222ec66cec489\nBrowser user agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/147.0.0.0 Safari/537.36 Edg/147.0.0.0\nLoading annotated-types, numpy, pandas, pydantic, pydantic_core, python-dateutil, pytz, pyyaml, six, typing-extensions\nLoaded annotated-types, numpy, pandas, pydantic, pydantic_core, python-dateutil, pytz, pyyaml, six, typing-extensions\n\u00e2\u009c\u0085 Successfully imported pythermolinkdb!\n\nMy experience was: \n\n<DESCRIBE YOUR EXPERIENCE HERE>\n",
+    "updated_by": "Community contribution via Google Forms",
+    "updated_at": "2026-04-25T01:12:30+00:00",
+    "examples": []
+}
