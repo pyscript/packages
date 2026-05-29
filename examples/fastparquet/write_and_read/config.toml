@@ -1,0 +1,1 @@
+packages = ["fastparquet", "pandas", "numpy"]
