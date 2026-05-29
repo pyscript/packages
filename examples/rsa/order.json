@@ -1,0 +1,5 @@
+[
+    "encrypt_and_decrypt",
+    "sign_and_verify",
+    "save_and_load_pem_keys"
+]
