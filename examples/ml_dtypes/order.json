@@ -1,0 +1,5 @@
+[
+    "bfloat16_basics",
+    "low_precision_summation",
+    "float8_landscape"
+]
