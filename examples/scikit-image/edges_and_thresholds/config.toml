@@ -1,0 +1,1 @@
+packages = ["scikit-image", "matplotlib", "numpy"]
