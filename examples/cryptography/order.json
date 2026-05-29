@@ -1,0 +1,5 @@
+[
+    "fernet_symmetric",
+    "password_based_key",
+    "rsa_signing"
+]
