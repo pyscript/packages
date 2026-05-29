@@ -17,19 +17,22 @@ prints a URL with the package pre-filled as a query argument. Open
 that URL and the page will:
 
 1. Read the target package from the `?package=` query argument.
-2. Fetch the package's examples from `api/package/<package>.json`.
+2. Fetch the package's examples from the server's `/examples.json`
+   endpoint, which reads `examples/<package>/` on disk (the source
+   of truth during review, before `build_data.py` has baked them
+   into the published API).
 3. Fill a dropdown with the package's examples, in order.
 4. For the selected example, build a fresh PyScript editor wired up
    with the example's setup, code, and configuration. Changing the
    dropdown rebuilds the editor for the newly selected example.
 
-The server serves the repository root, so the page's relative fetch
-of `api/package/<package>.json` resolves against the data that
-`build_data.py` produced. Run this from the repo root, like the
-other scripts.
+The server serves the repository root statically and reads
+`examples/<package>/` from the same root for the examples endpoint.
+Run this from the repo root, like the other scripts.
 """
 
 import argparse
+import json
 import subprocess
 import sys
 import webbrowser
@@ -37,6 +40,9 @@ from functools import partial
 from http.server import SimpleHTTPRequestHandler, ThreadingHTTPServer
 from pathlib import Path
 from typing import Iterable
+from urllib.parse import parse_qs
+
+import build_data
 
 # The repository root is the directory this script lives in.
 REPO_ROOT = Path(__file__).resolve().parent
@@ -47,6 +53,11 @@ BRANCH_PREFIX = "examples/"
 # The path at which the generated check page is served. Anything not
 # matching this falls through to ordinary static file serving.
 CHECK_PATH = "/check"
+
+# The path at which the package's examples are served as JSON. The
+# page fetches this rather than reading the published `api/` files,
+# so it reflects the current state of `examples/<package>/` on disk.
+EXAMPLES_PATH = "/examples.json"
 
 # The PyScript release whose editor and runtime we load. Pinned so a
 # future PyScript change can't silently alter the test harness.
@@ -116,14 +127,15 @@ def build_page(package: str) -> str:
     The package name is baked into the page as a fallback, but the
     page reads the live `?package=` query argument at runtime so the
     same page works for any package. The page fetches the examples
-    JSON, fills a dropdown, and (re)builds a PyScript editor for the
-    selected example.
+    from the server's examples endpoint, fills a dropdown, and
+    (re)builds a PyScript editor for the selected example.
     """
     base = f"https://pyscript.net/releases/{PYSCRIPT_VERSION}"
     return _PAGE_TEMPLATE.format(
         package=package,
         pyscript_css=f"{base}/core.css",
         pyscript_js=f"{base}/core.js",
+        examples_path=EXAMPLES_PATH,
     )
 
 
@@ -192,14 +204,15 @@ _PAGE_TEMPLATE = """\
       }}
 
       async function loadExamples(packageName) {{
-        // Fetch the package's examples JSON produced by
-        // build_data.py. A missing file means the package has no
-        // generated data yet.
-        const url = `api/package/${{packageName}}.json`;
+        // Fetch the package's examples from the server, which reads
+        // `examples/<package>/` on disk. This is the source of
+        // truth during review: the published `api/` files are only
+        // rebuilt by build_data.py after PRs are merged.
+        const url = `{examples_path}?package=${{packageName}}`;
         const response = await fetch(url);
         if (!response.ok) {{
           throw new Error(
-            `Could not load ${{url}} (status ${{response.status}}).`
+            `Could not load examples (status ${{response.status}}).`
           );
         }}
         const data = await response.json();
@@ -225,14 +238,13 @@ _PAGE_TEMPLATE = """\
         const env = `check_${{editorGeneration}}`;
         const config = JSON.stringify(example.config || {{}});
 
-        // The examples' display() override sends output to the global
-        // `__pyscript_display_target__`, which the real packages site
-        // injects. We reproduce that contract here: a target div with
-        // a known id, and a Python line binding the global to that id.
-        // The binding is prepended to whichever editor runs first in
-        // the shared environment (the setup editor if present, else
-        // the code editor), so the name exists before any example
-        // code references it.
+        // Each example gets its own target div, and the editor's
+        // `target` attribute tells PyScript to render the editor
+        // (and its output area) inside that div. The example's
+        // display() calls then land in the editor's own output area,
+        // so we don't need to bind anything in the Python namespace.
+        // See: https://docs.pyscript.net/2026.3.1/user-guide/editor/
+        //      #custom-rendering-location
         const targetId = `output-${{editorGeneration}}`;
         const target = document.createElement("div");
         target.id = targetId;
@@ -253,18 +265,17 @@ _PAGE_TEMPLATE = """\
         const editor = document.createElement("script");
         editor.setAttribute("type", "py-editor");
         editor.setAttribute("env", env);
-        // Without a setup editor, the visible editor needs the config
-        // and must carry the target binding itself.
+        editor.setAttribute("target", targetId);
+        // Without a setup editor, the visible editor needs the config.
         if (!example.setup) {{
           editor.setAttribute("config", config);
           editor.textContent = bind + (example.code || "");
-        }} else {{
-          editor.textContent = example.code || "";
         }}
+        editor.textContent = example.code || "";
         area.appendChild(editor);
 
-        // The target div sits after the editor so output appears
-        // below the code that produced it.
+        // The target div sits after the editors; PyScript renders
+        // each editor's CodeMirror surface and output area inside it.
         area.appendChild(target);
       }}
 
@@ -326,11 +337,13 @@ _PAGE_TEMPLATE = """\
 
 
 class CheckRequestHandler(SimpleHTTPRequestHandler):
-    """Serve the repo root statically, plus the check page at /check.
+    """Serve the repo root statically, plus the check page and the
+    examples endpoint at the configured paths.
 
-    Everything except the check path is handled by the standard
-    static file server, so the page's relative `api/...` fetch works
-    against the real data files.
+    Static files (the published `api/`, any other tracked content)
+    are handled by the standard static file server. The check page
+    and `/examples.json` are served from in-memory and on-disk data
+    respectively.
 
     Every response carries the two cross-origin isolation headers
     PyScript needs for SharedArrayBuffer (which the editor's worker-
@@ -354,17 +367,56 @@ class CheckRequestHandler(SimpleHTTPRequestHandler):
         super().end_headers()
 
     def do_GET(self) -> None:
-        """Serve the check page at /check, else fall back to static."""
-        path = self.path.split("?", 1)[0]
+        """Route /check, /examples.json, else static file serving."""
+        path, _, query = self.path.partition("?")
         if path == CHECK_PATH:
-            body = self.page_html.encode("utf-8")
-            self.send_response(200)
-            self.send_header("Content-Type", "text/html; charset=utf-8")
-            self.send_header("Content-Length", str(len(body)))
-            self.end_headers()
-            self.wfile.write(body)
+            self._serve_bytes(
+                self.page_html.encode("utf-8"),
+                "text/html; charset=utf-8",
+            )
+            return
+        if path == EXAMPLES_PATH:
+            self._serve_examples(query)
             return
         super().do_GET()
+
+    def _serve_bytes(self, body: bytes, content_type: str) -> None:
+        """Write a 200 response with the given body and content type."""
+        self.send_response(200)
+        self.send_header("Content-Type", content_type)
+        self.send_header("Content-Length", str(len(body)))
+        self.end_headers()
+        self.wfile.write(body)
+
+    def _serve_examples(self, query: str) -> None:
+        """Return the requested package's examples as JSON.
+
+        The package comes from the `?package=` query argument so
+        one running server can serve any package without restart.
+        Reads `examples/<package>/` on disk via
+        `build_data.load_examples`.
+        """
+        params = parse_qs(query)
+        package_name = (params.get("package") or [""])[0]
+        if not package_name:
+            self._serve_error(400, "missing 'package' query argument")
+            return
+        try:
+            examples = build_data.load_examples(package_name)
+        except Exception as exc:
+            self._serve_error(500, str(exc))
+            return
+        payload = json.dumps({"examples": examples}).encode("utf-8")
+        self._serve_bytes(payload, "application/json")
+
+    def _serve_error(self, status: int, message: str) -> None:
+        """Write a JSON error response with the given status."""
+        body = json.dumps({"error": message}).encode("utf-8")
+        self.send_response(status)
+        self.send_header("Content-Type", "application/json")
+        self.send_header("Content-Length", str(len(body)))
+        self.end_headers()
+        self.wfile.write(body)
 
 
 def make_handler_class(page_html: str, repo_root: Path):
@@ -389,9 +441,11 @@ def serve(
 ) -> None:  # pragma: no cover - exercised manually, not in tests.
     """Start the local server and print the URL to open.
 
-    Blocks until interrupted with Ctrl-C. Not covered by automated
-    tests because it runs a blocking server; the page building and
-    request handling are tested separately.
+    `package` is used only to compose the URL printed to the
+    operator. The server itself is package-agnostic: each request
+    to /examples.json names the package in its query string, so a
+    single running server can show any package as you change the
+    `?package=` query and reload.
     """
     page_html = build_page(package)
     handler = make_handler_class(page_html, repo_root)
@@ -401,6 +455,10 @@ def serve(
     )
     print(f"Checking package: {package}")
     print(f"Open this URL in your browser:\n\n    {url}\n")
+    print(
+        "To check a different package, change the `package` query "
+        "argument in the URL and reload.",
+    )
     print("Press Ctrl-C to stop the server.")
     if open_browser:
         webbrowser.open(url)
