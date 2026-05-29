@@ -1,0 +1,1 @@
+packages = ["soxr", "numpy", "matplotlib"]
