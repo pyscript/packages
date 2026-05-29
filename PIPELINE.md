@@ -255,6 +255,29 @@ git log -1
 git diff main..HEAD
 ```
 
+The helpful `check.py` script will load the PyScript editor
+environment for each example, so you can check it works in the
+browser.
+
+When in the branch just run:
+
+```sh
+python check.py
+```
+
+Your browser should open with the expected first example.
+
+If you find yourself in the main branch and need to try out a
+specific package, just pass it as an argument:
+
+```sh
+python check.py pandas
+```
+
+Finally, when in the browser, if you append `?package=<package_name>`
+to the URL, the examples for that the named package will be displayed
+(if available).
+
 For each branch, look at the three files per example
 (`config.toml`, `setup.py`, `code.py`) and ask:
 
