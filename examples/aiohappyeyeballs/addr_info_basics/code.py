@@ -57,8 +57,8 @@ note(
     "failure), <code>remove_addr_infos</code> strips every entry that matches."
 )
 working2 = list(addr_infos)
-remove_addr_infos(working2, "93.184.216.34")
-note("After removing 93.184.216.34:")
+remove_addr_infos(working2, ("93.184.216.34", 80))
+note("After removing 93.184.216.34:80")
 format_addr_infos(working2)
 
 note(f"aiohappyeyeballs version in use: <code>{aiohappyeyeballs.__version__}</code>")

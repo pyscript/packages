@@ -108,7 +108,7 @@ note(
     "and reorder so the IPv4 fallback is tried first."
 )
 pruned = list(addr_infos)
-remove_addr_infos(pruned, "2001:db8::1")
+remove_addr_infos(pruned, ("2001:db8::1", 80, 0, 0))
 pop_addr_infos_interleave(pruned, 0)  # no-op example: keeps ordering intact
 note("Cleaned addrinfo list:")
 for entry in pruned:
