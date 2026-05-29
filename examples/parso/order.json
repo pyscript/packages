@@ -1,0 +1,5 @@
+[
+    "parse_and_walk",
+    "syntax_errors",
+    "rename_identifier"
+]
