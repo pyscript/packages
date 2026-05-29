@@ -1,0 +1,1 @@
+packages = ["xyzservices", "matplotlib", "numpy", "pillow", "requests"]
