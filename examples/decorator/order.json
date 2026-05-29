@@ -1,0 +1,5 @@
+[
+    "signature_preserving_decorator",
+    "decorator_factory_with_arguments",
+    "multiple_dispatch"
+]
