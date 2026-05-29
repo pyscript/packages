@@ -19,7 +19,7 @@ from pyscript import window, HTML, display as _display
 js.alert = window.alert
 
 def display(*args, **kwargs):
-  return _display(*args, **kwargs)
+  return _display(*args, **kwargs, target=__pyscript_display_target__)
 
 # Standard dynamic module creation and registration in sys.modules to shim
 # IPython's display API onto PyScript. ;-)
