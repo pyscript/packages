@@ -40,6 +40,3 @@ def note(text):
     display(HTML(f"<p>{text}</p>"), append=True)
 
 
-import audioop
-import numpy as np
-import matplotlib.pyplot as plt

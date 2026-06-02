@@ -10,6 +10,11 @@ Docs: https://docs.python.org/3.12/library/audioop.html
 """
 from IPython.core.display import display, HTML
 
+
+import audioop
+import numpy as np
+import matplotlib.pyplot as plt
+
 # A short 440 Hz sine wave (concert A), as 16-bit signed PCM.
 sample_rate = 8000          # samples per second
 duration_seconds = 0.5
