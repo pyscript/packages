@@ -40,9 +40,3 @@ def heading(text, level=2):
 def note(text):
     display(HTML(f"<p>{text}</p>"), append=True)
 
-
-# Autograd ships a thin wrapper around NumPy. Always import this version
-# (instead of vanilla `numpy`) when you want functions to be differentiable.
-import autograd.numpy as np
-from autograd import grad, elementwise_grad
-import matplotlib.pyplot as plt

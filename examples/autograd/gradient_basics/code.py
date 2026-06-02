@@ -11,6 +11,13 @@ Docs: https://github.com/HIPS/autograd/blob/master/docs/tutorial.md
 from IPython.core.display import display, HTML
 
 
+# Autograd ships a thin wrapper around NumPy. Always import this version
+# (instead of vanilla `numpy`) when you want functions to be differentiable.
+import autograd.numpy as np
+from autograd import grad, elementwise_grad
+import matplotlib.pyplot as plt
+
+
 # ---------------------------------------------------------------------
 # A scalar function and its derivative.
 # ---------------------------------------------------------------------
