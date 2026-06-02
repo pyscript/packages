@@ -15,11 +15,13 @@ note(
 password = "correct horse battery staple"
 
 # A few configurations spanning "fast" to "stronger". The numbers
-# are illustrative; tune for your own environment.
+# are illustrative; tune for your own environment. Inside a browser the
+# parallelism must only be set to 1. In regular Python this value can be
+# higher.
 configurations = [
     ("fast",     {"memory_cost": 8 * 1024,  "time_cost": 1, "parallelism": 1}),
-    ("default",  {"memory_cost": 64 * 1024, "time_cost": 3, "parallelism": 4}),
-    ("stronger", {"memory_cost": 128 * 1024, "time_cost": 4, "parallelism": 4}),
+    ("default",  {"memory_cost": 64 * 1024, "time_cost": 3, "parallelism": 1}),
+    ("stronger", {"memory_cost": 128 * 1024, "time_cost": 4, "parallelism": 1}),
 ]
 
 rows = ["<tr><th>Profile</th><th>memory_cost (KiB)</th>"
@@ -55,7 +57,7 @@ old_hash = old_hasher.hash(password)
 
 # Today's policy is stronger.
 current_hasher = PasswordHasher(
-    memory_cost=64 * 1024, time_cost=3, parallelism=4,
+    memory_cost=64 * 1024, time_cost=3, parallelism=1,
 )
 
 assert current_hasher.verify(old_hash, password)

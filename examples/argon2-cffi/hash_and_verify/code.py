@@ -9,6 +9,10 @@ Docs: https://argon2-cffi.readthedocs.io/
 """
 from IPython.core.display import display, HTML
 
+# Package imports for this example.
+from argon2 import PasswordHasher
+from argon2.exceptions import VerifyMismatchError
+
 # A PasswordHasher with library-recommended defaults. You can tune
 # memory cost, time cost, and parallelism, but the defaults are a fine
 # starting point for most applications.

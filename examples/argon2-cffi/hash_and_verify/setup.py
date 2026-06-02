@@ -39,7 +39,3 @@ def heading(text, level=2):
 def note(text):
     display(HTML(f"<p>{text}</p>"), append=True)
 
-
-# Package imports for this example.
-from argon2 import PasswordHasher
-from argon2.exceptions import VerifyMismatchError
