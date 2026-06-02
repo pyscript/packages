@@ -10,6 +10,11 @@ Docs: https://beartype.readthedocs.io
 """
 from IPython.core.display import display, HTML
 
+
+from beartype import beartype
+from beartype.roar import BeartypeCallHintParamViolation, BeartypeCallHintReturnViolation
+
+
 # A small inventory function. Note the standard, ordinary type hints:
 # beartype reads these directly. No special syntax required.
 @beartype

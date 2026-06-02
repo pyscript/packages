@@ -3,6 +3,11 @@
 # strings" or "a positive integer". Beartype validators let you attach
 # arbitrary boolean predicates to any type using typing.Annotated.
 # ---------------------------------------------------------------------
+from typing import Annotated
+from beartype import beartype
+from beartype.vale import Is
+from beartype.roar import BeartypeCallHintParamViolation
+
 
 heading("1. Defining reusable validated types")
 note(

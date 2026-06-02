@@ -15,8 +15,3 @@ def heading(text, level=2):
 
 def note(text):
     display(HTML(f"<p>{text}</p>"), append=True)
-
-
-from beartype import beartype
-from beartype.door import is_bearable, die_if_unbearable
-from beartype.roar import BeartypeDoorHintViolation

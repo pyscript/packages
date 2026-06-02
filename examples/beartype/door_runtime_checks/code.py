@@ -3,6 +3,10 @@
 # you check arbitrary objects against arbitrary type hints — anywhere,
 # anytime, no decorator required.
 # ---------------------------------------------------------------------
+from beartype import beartype
+from beartype.door import is_bearable, die_if_unbearable
+from beartype.roar import BeartypeDoorHintViolation
+
 
 heading("1. is_bearable: a turbocharged isinstance")
 note(
