@@ -18,8 +18,3 @@ def heading(text, level=2):
 def note(text):
     display(HTML(f"<p>{text}</p>"), append=True)
 
-
-import numpy as np
-import matplotlib.pyplot as plt
-import astropy.units as u
-from astropy.coordinates import SkyCoord

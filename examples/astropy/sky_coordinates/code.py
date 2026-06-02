@@ -2,6 +2,13 @@
 # Working with sky coordinates: SkyCoord, frames, and separations.
 # ---------------------------------------------------------------------
 
+
+import numpy as np
+import matplotlib.pyplot as plt
+import astropy.units as u
+from astropy.coordinates import SkyCoord
+
+
 heading("Locating things on the sky")
 note(
     "`SkyCoord` represents positions on the celestial sphere. You can "

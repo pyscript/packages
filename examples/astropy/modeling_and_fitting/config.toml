@@ -1,1 +1,1 @@
-packages = ["astropy", "numpy", "matplotlib"]
+packages = ["astropy", "numpy", "matplotlib", "scipy"]

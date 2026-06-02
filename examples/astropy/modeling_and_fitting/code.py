@@ -2,6 +2,13 @@
 # Fitting a model to noisy spectral data with astropy.modeling.
 # ---------------------------------------------------------------------
 
+import numpy as np
+import matplotlib.pyplot as plt
+import astropy.units as u
+from astropy.modeling import models, fitting
+
+rng = np.random.default_rng(7)
+
 heading("Fitting an emission line")
 note(
     "Astropy's `modeling` framework lets you compose analytic models "

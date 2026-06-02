@@ -10,6 +10,11 @@ Docs: https://docs.astropy.org/en/stable/units/
 """
 from IPython.core.display import display, HTML
 
+
+import astropy.units as u
+from astropy.constants import G, M_sun, R_sun, c
+
+
 heading("1. Attach units to numbers")
 note(
     "Multiply a value by a unit to get a Quantity. Quantities behave "
