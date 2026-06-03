@@ -4,6 +4,11 @@
 # integrity constraint" pattern in ASP.
 # ---------------------------------------------------------------------
 
+import clingo
+from clingo.control import Control
+from clingo.symbol import Number, Function, String
+
+
 heading("Coloring a small map of regions")
 note(
     "Six regions border each other in a fixed pattern. We ask clingo "

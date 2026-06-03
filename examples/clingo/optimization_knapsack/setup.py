@@ -16,7 +16,3 @@ def heading(text, level=2):
 def note(text):
     display(HTML(f"<p>{text}</p>"), append=True)
 
-
-import clingo
-from clingo.control import Control
-from clingo.symbol import Number, Function, String

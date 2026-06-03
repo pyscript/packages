@@ -4,6 +4,10 @@
 # Here we solve a small 0/1 knapsack: pick items to maximize value
 # while staying under a weight limit.
 # ---------------------------------------------------------------------
+import clingo
+from clingo.control import Control
+from clingo.symbol import Number, Function, String
+
 
 heading("Packing a hiker's backpack")
 note(

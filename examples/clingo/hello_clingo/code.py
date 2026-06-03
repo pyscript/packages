@@ -11,6 +11,11 @@ Docs: https://potassco.org/clingo/python-api/current/clingo/
 """
 from IPython.core.display import display, HTML
 
+import clingo
+from clingo.control import Control
+from clingo.symbol import Number, Function, String
+
+
 heading("A tiny logic program: who likes what?")
 note(
     "We declare three people and three foods, and a few facts about "
