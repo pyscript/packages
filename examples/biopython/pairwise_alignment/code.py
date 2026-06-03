@@ -2,6 +2,9 @@
 # Aligning two protein sequences with PairwiseAligner.
 # ---------------------------------------------------------------------
 
+from Bio import Align
+from Bio.Align import substitution_matrices
+
 heading("Pairwise alignment with Bio.Align")
 note(
     "`PairwiseAligner` is Biopython's modern interface for sequence "

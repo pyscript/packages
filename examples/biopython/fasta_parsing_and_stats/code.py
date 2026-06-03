@@ -2,6 +2,15 @@
 # Reading and writing FASTA: a tiny pretend transcriptome.
 # ---------------------------------------------------------------------
 
+
+from io import StringIO
+import matplotlib.pyplot as plt
+from Bio import SeqIO
+from Bio.Seq import Seq
+from Bio.SeqRecord import SeqRecord
+from Bio.SeqUtils import gc_fraction
+
+
 heading("Parsing a FASTA file from a string")
 note(
     "In real work you'd open a .fasta file, but `SeqIO.parse` accepts "

@@ -38,8 +38,3 @@ def heading(text, level=2):
 
 def note(text):
     display(HTML(f"<p>{text}</p>"), append=True)
-
-
-# Biopython imports for this example.
-from Bio.Seq import Seq
-from Bio.SeqRecord import SeqRecord

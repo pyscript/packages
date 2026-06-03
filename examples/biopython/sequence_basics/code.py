@@ -10,6 +10,10 @@ Docs: https://biopython.org/docs/latest/Tutorial/
 """
 from IPython.core.display import display, HTML
 
+# Biopython imports for this example.
+from Bio.Seq import Seq
+from Bio.SeqRecord import SeqRecord
+
 # A short stretch of DNA, the start of a fictional gene.
 dna = Seq("ATGGCCATTGTAATGGGCCGCTGAAAGGGTGCCCGATAG")
 
