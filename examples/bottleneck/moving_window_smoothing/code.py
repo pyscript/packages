@@ -2,6 +2,12 @@
 # Moving windows: smoothing a noisy signal with bn.move_*
 # ---------------------------------------------------------------------
 
+import numpy as np
+import bottleneck as bn
+import matplotlib.pyplot as plt
+
+rng = np.random.default_rng(42)
+
 heading("Smoothing noisy sensor data with moving windows")
 note(
     "Bottleneck's <code>move_*</code> functions slide a fixed-size "

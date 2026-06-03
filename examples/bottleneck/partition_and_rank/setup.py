@@ -17,9 +17,3 @@ def heading(text, level=2):
 
 def note(text):
     display(HTML(f"<p>{text}</p>"), append=True)
-
-
-import numpy as np
-import bottleneck as bn
-
-rng = np.random.default_rng(7)

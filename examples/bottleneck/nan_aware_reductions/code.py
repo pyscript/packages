@@ -11,6 +11,12 @@ Source: https://github.com/pydata/bottleneck
 """
 from IPython.core.display import display, HTML
 
+import numpy as np
+import bottleneck as bn
+
+rng = np.random.default_rng(42)
+
+
 # Imagine an array of daily rainfall (mm) for a weather station, with
 # NaN marking days when the rain gauge was offline.
 rainfall = np.array(

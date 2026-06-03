@@ -2,6 +2,12 @@
 # Partition, rank, and replace: shaping arrays without a full sort.
 # ---------------------------------------------------------------------
 
+import numpy as np
+import bottleneck as bn
+
+rng = np.random.default_rng(7)
+
+
 heading("Top-k scores without sorting the whole array")
 note(
     "<code>bn.partition</code> rearranges an array so the k smallest "
