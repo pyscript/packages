@@ -6,6 +6,15 @@ cheaply over very large (even infinite) sequences. We materialize them
 with `list()` only when we want to look at the result.
 """
 from IPython.core.display import display, HTML
+# cytoolz: a Cython implementation of toolz, providing fast functional
+# utilities for iterables, functions, and dictionaries.
+# Docs: https://toolz.readthedocs.io/en/latest/api.html
+import cytoolz
+from cytoolz import (
+    take, drop, partition, partition_all, concat,
+    frequencies, groupby, pluck, unique, first, last,
+)
+
 
 # A small stream of orders from a fictional online tea shop. Each order
 # is a dict; we'll slice it, summarize it, and group it.

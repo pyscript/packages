@@ -40,12 +40,3 @@ def heading(text, level=2):
 def note(text):
     display(HTML(f"<p>{text}</p>"), append=True)
 
-
-# cytoolz: a Cython implementation of toolz, providing fast functional
-# utilities for iterables, functions, and dictionaries.
-# Docs: https://toolz.readthedocs.io/en/latest/api.html
-import cytoolz
-from cytoolz import (
-    take, drop, partition, partition_all, concat,
-    frequencies, groupby, pluck, unique, first, last,
-)

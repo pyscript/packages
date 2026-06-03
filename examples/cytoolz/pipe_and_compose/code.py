@@ -1,6 +1,10 @@
 # Pipelines: thread a value through a sequence of small, pure functions.
 # `pipe(value, f, g, h)` is equivalent to `h(g(f(value)))`, but reads
 # top-to-bottom in the order things actually happen.
+import cytoolz
+from cytoolz import pipe, compose, curry, map as cmap, filter as cfilter
+from cytoolz.curried import map as map_c, filter as filter_c, get as get_c
+
 
 heading("1. pipe: a value flowing through transformations")
 

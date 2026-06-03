@@ -16,7 +16,3 @@ def heading(text, level=2):
 def note(text):
     display(HTML(f"<p>{text}</p>"), append=True)
 
-
-import cytoolz
-from cytoolz import pipe, compose, curry, map as cmap, filter as cfilter
-from cytoolz.curried import map as map_c, filter as filter_c, get as get_c
