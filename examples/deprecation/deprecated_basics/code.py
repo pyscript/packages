@@ -10,6 +10,10 @@ See: http://deprecation.readthedocs.io/
 """
 from IPython.core.display import display, HTML
 
+import warnings
+import deprecation
+
+
 # Pretend this is the version string of our library, e.g. from a
 # `__version__` attribute. The decorator compares this to the
 # `deprecated_in` and `removed_in` versions to decide what to do.
