@@ -17,11 +17,3 @@ def heading(text, level=2):
 
 def note(text):
     display(HTML(f"<p>{text}</p>"), append=True)
-
-
-from marshmallow import Schema, fields
-from deepfriedmarshmallow import (
-    deep_fry_schema,
-    deep_fry_schema_object,
-    JitSchemaMixin,
-)

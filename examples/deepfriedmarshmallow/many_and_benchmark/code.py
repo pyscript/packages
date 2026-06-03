@@ -1,6 +1,12 @@
 # Bulk dumping with `many=True`, and a side-by-side timing comparison
 # between a plain Marshmallow schema and a JIT-backed one.
 
+from datetime import date, timedelta
+from time import perf_counter
+from marshmallow import Schema, fields
+from deepfriedmarshmallow import JitSchema
+
+
 heading("Serializing a list of records with many=True")
 note(
     "Both vanilla Marshmallow and Deep-Fried Marshmallow support "

@@ -39,9 +39,3 @@ def heading(text, level=2):
 
 def note(text):
     display(HTML(f"<p>{text}</p>"), append=True)
-
-
-# Example-specific imports.
-from datetime import date
-from marshmallow import fields
-from deepfriedmarshmallow import JitSchema

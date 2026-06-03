@@ -10,6 +10,12 @@ Docs: https://github.com/mLupine/DeepFriedMarshmallow
 """
 from IPython.core.display import display, HTML
 
+# Example-specific imports.
+from datetime import date
+from marshmallow import fields
+from deepfriedmarshmallow import JitSchema
+
+
 
 # Two related schemas: an artist, and an album that nests one artist.
 class ArtistSchema(JitSchema):

@@ -3,6 +3,14 @@
 # Marshmallow gives you three ways to opt in without touching the
 # original definition.
 
+from marshmallow import Schema, fields
+from deepfriedmarshmallow import (
+    deep_fry_schema,
+    deep_fry_schema_object,
+    JitSchemaMixin,
+)
+
+
 heading("1. A custom base class via JitSchemaMixin")
 note(
     "Mix `JitSchemaMixin` into your existing base class. The mixin "

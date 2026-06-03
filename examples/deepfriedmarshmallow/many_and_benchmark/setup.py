@@ -17,9 +17,3 @@ def heading(text, level=2):
 
 def note(text):
     display(HTML(f"<p>{text}</p>"), append=True)
-
-
-from datetime import date, timedelta
-from time import perf_counter
-from marshmallow import Schema, fields
-from deepfriedmarshmallow import JitSchema
