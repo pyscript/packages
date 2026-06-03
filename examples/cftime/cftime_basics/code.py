@@ -11,6 +11,10 @@ Docs: https://unidata.github.io/cftime/
 """
 from IPython.core.display import display, HTML
 
+import numpy as np
+import cftime
+
+
 heading("Creating cftime.datetime instances")
 note(
     "A cftime.datetime is calendar-aware. The same calendar date can "

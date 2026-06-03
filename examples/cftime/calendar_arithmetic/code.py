@@ -1,4 +1,8 @@
 # Arithmetic, differences, and crossing calendars.
+import numpy as np
+import cftime
+from datetime import timedelta
+
 
 heading("Adding timedeltas to cftime.datetime")
 note(

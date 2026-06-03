@@ -9,10 +9,6 @@ def display(*args, **kwargs):
     return _display(*args, **kwargs, target=__pyscript_display_target__)
 
 
-import numpy as np
-import cftime
-from datetime import timedelta
-
 
 def heading(text, level=2):
     display(HTML(f"<h{level}>{text}</h{level}>"), append=True)
