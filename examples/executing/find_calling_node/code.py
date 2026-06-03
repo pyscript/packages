@@ -9,6 +9,10 @@ behind libraries like `icecream`, `snoop`, and `stack_data`.
 See: https://github.com/alexmojaki/executing
 """
 from IPython.core.display import display, HTML
+import ast
+import inspect
+import executing
+
 
 
 def whoami():
