@@ -35,6 +35,3 @@ def heading(text, level=2):
 def note(text):
     display(HTML(f"<p>{text}</p>"), append=True)
 
-
-from bitarray import bitarray
-from bitarray.util import ba2int, int2ba, ba2hex, hex2ba

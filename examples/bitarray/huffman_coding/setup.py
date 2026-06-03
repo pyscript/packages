@@ -17,6 +17,3 @@ def note(text):
     display(HTML(f"<p>{text}</p>"), append=True)
 
 
-from collections import Counter
-from bitarray import bitarray, decodetree
-from bitarray.util import huffman_code

@@ -2,6 +2,11 @@
 # Use bitarray's prefix-code machinery to build a working Huffman codec.
 # ---------------------------------------------------------------------
 
+from collections import Counter
+from bitarray import bitarray, decodetree
+from bitarray.util import huffman_code
+
+
 heading("Counting symbol frequencies")
 note(
     "Huffman coding gives shorter codes to more common symbols. "
