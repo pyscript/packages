@@ -4,6 +4,7 @@
 # with color so the eye can scan them quickly. On Windows, calling
 # `just_fix_windows_console()` once at program start is enough to
 # make these ANSI sequences render correctly in the console.
+from colorama import Fore, Back, Style, just_fix_windows_console
 
 # Recommended one-liner for cross-platform support. On non-Windows
 # platforms, and inside this browser sandbox, it's a harmless no-op.
