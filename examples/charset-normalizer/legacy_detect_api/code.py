@@ -1,6 +1,8 @@
 # ---------------------------------------------------------------------
 # The chardet-compatible detect() function, plus a binary check.
 # ---------------------------------------------------------------------
+from charset_normalizer import detect, from_bytes, is_binary
+
 
 heading("A chardet-compatible shortcut: detect()")
 note(

@@ -10,6 +10,10 @@ Project docs: https://charset-normalizer.readthedocs.io/
 """
 from IPython.core.display import display, HTML
 
+# Package imports for the example.
+from charset_normalizer import from_bytes
+
+
 # Imagine these bytes arrived from an old subtitle file, an email
 # attachment, or a scraped web page, and nobody told us how they
 # were encoded. Each line below is the same French sentence, encoded

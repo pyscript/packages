@@ -2,6 +2,9 @@
 # Multiple plausible encodings: walking the candidate list.
 # ---------------------------------------------------------------------
 
+from charset_normalizer import from_bytes
+
+
 heading("When more than one encoding fits")
 note(
     "Some byte sequences decode without errors under several different "

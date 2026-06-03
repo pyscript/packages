@@ -39,7 +39,3 @@ def heading(text, level=2):
 
 def note(text):
     display(HTML(f"<p>{text}</p>"), append=True)
-
-
-# Package imports for the example.
-from charset_normalizer import from_bytes
