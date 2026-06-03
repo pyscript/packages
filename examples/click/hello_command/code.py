@@ -6,6 +6,27 @@ Click docs: https://click.palletsprojects.com/
 """
 from IPython.core.display import display, HTML
 
+import click
+from click.testing import CliRunner
+
+# A CliRunner lets us invoke a Click command in-process and capture
+# its output, which is perfect for trying things out interactively.
+runner = CliRunner()
+
+
+def show_output(result):
+    """Render a CliRunner result as a preformatted block."""
+    text = result.output if result.output else "(no output)"
+    display(
+        HTML(
+            f"<pre style='background:#f4f4f4;padding:8px;"
+            f"border-radius:4px'>{text}</pre>"
+        ),
+        append=True,
+    )
+    note(f"Exit code: <code>{result.exit_code}</code>")
+
+
 # ---------------------------------------------------------------------
 # Section 1: Decorate a function to make it a command.
 # ---------------------------------------------------------------------
