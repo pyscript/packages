@@ -6,6 +6,9 @@
 # structs, and pointers. The values you create with `ffi.new(...)` are
 # real C memory, garbage-collected when the Python handle goes away.
 
+from cffi import FFI
+
+
 ffi = FFI()
 
 # Declare a struct type and a couple of helpers we'll use below.

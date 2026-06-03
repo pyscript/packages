@@ -13,6 +13,7 @@ into the C standard library that's already loaded in the runtime.
 Docs: https://cffi.readthedocs.io/
 """
 from IPython.core.display import display, HTML
+from cffi import FFI
 
 # Step 1: create an FFI instance. This is the entry point for everything.
 ffi = FFI()

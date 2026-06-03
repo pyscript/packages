@@ -5,6 +5,8 @@
 # Many C APIs take a function pointer -- think `qsort`, GUI event
 # handlers, or signal callbacks. cffi's `ffi.callback(...)` wraps a
 # Python function so that C can call it as if it were a C function.
+from cffi import FFI
+
 
 ffi = FFI()
 
