@@ -10,6 +10,8 @@ See the tutorial: http://www.grantjenks.com/docs/diskcache/tutorial.html
 """
 from IPython.core.display import display, HTML
 import time
+import diskcache as dc
+
 
 # A `Cache` is backed by a directory. Here we use an in-memory path
 # inside the Pyodide virtual filesystem -- on a normal machine you'd
