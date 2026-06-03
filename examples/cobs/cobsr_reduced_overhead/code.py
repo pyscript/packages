@@ -7,6 +7,7 @@
 # trailing length code, and elides the extra byte. For short messages
 # made of mostly non-zero bytes -- typical of small telemetry frames
 # -- this is a meaningful saving.
+from cobs import cobs, cobsr
 
 heading("Comparing COBS and COBS/R on the same input")
 

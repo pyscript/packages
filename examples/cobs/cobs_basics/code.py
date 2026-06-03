@@ -11,6 +11,23 @@ the absence of zero bytes, then decode it.
 """
 from IPython.core.display import display, HTML
 
+# Package imports for this example.
+from cobs import cobs
+
+
+def hex_view(data, label=None):
+    """Render a bytes object as a space-separated hex string."""
+    hex_text = " ".join(f"{b:02X}" for b in data)
+    prefix = f"<strong>{label}</strong> " if label else ""
+    display(
+        HTML(
+            f"<pre style='font-family:monospace;white-space:pre-wrap'>"
+            f"{prefix}({len(data)} bytes)\n{hex_text}</pre>"
+        ),
+        append=True,
+    )
+
+
 # A message that contains zero bytes in the middle. Without byte
 # stuffing, a receiver scanning for 0x00 delimiters would chop this
 # packet in half.

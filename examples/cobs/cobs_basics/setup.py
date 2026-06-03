@@ -39,20 +39,3 @@ def heading(text, level=2):
 
 def note(text):
     display(HTML(f"<p>{text}</p>"), append=True)
-
-
-# Package imports for this example.
-from cobs import cobs
-
-
-def hex_view(data, label=None):
-    """Render a bytes object as a space-separated hex string."""
-    hex_text = " ".join(f"{b:02X}" for b in data)
-    prefix = f"<strong>{label}</strong> " if label else ""
-    display(
-        HTML(
-            f"<pre style='font-family:monospace;white-space:pre-wrap'>"
-            f"{prefix}({len(data)} bytes)\n{hex_text}</pre>"
-        ),
-        append=True,
-    )
