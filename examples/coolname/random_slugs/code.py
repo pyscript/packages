@@ -6,6 +6,9 @@ codes, temporary usernames, or container labels.
 Docs: https://coolname.readthedocs.io/en/latest/
 """
 from IPython.core.display import display, HTML
+# coolname imports for the first example.
+from coolname import generate, generate_slug, get_combinations_count
+
 
 heading("1. A handful of random slugs")
 note(

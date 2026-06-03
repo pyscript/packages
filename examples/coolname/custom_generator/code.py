@@ -4,6 +4,8 @@
 #
 # Customization guide:
 # https://coolname.readthedocs.io/en/latest/customization.html
+from coolname import RandomGenerator
+
 
 heading("A themed generator: tea blends of the day")
 note(
@@ -27,7 +29,7 @@ tea_generator = RandomGenerator({
     },
     "base": {
         "type": "words",
-        "words": ["chai", "matcha", "oolong", "rooibos", "earl-grey"],
+        "words": ["chai", "matcha", "oolong", "rooibos", "earlgrey"],
     },
 })
 

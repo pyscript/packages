@@ -1,6 +1,8 @@
 # Generate a batch of memorable codenames for a fleet of objects --
 # servers, experiments, build artifacts, support tickets, anything
 # you'd otherwise label with an opaque UUID.
+from coolname import generate_slug
+
 
 heading("Codenames for a fleet of servers")
 note(

@@ -40,6 +40,3 @@ def heading(text, level=2):
 def note(text):
     display(HTML(f"<p>{text}</p>"), append=True)
 
-
-# coolname imports for the first example.
-from coolname import generate, generate_slug, get_combinations_count
