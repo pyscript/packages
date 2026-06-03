@@ -2,6 +2,11 @@
 # Tuning compression: different codecs and filters for the same data.
 # ---------------------------------------------------------------------
 
+import numpy as np
+import blosc2
+
+rng = np.random.default_rng(0)
+
 heading("Comparing codecs on a noisy sensor signal")
 note(
     "Blosc2 ships several codecs (ZSTD, LZ4, LZ4HC, BLOSCLZ, ZLIB) "

@@ -10,6 +10,14 @@ Docs: https://www.blosc.org/python-blosc2/python-blosc2.html
 """
 from IPython.core.display import display, HTML
 
+
+# Package imports for the first example.
+import numpy as np
+import blosc2
+
+rng = np.random.default_rng(0)
+
+
 heading("Compressing a 2D temperature grid")
 note(
     "We simulate a 1000x1000 temperature field with smooth spatial "

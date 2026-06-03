@@ -40,9 +40,3 @@ def heading(text, level=2):
 def note(text):
     display(HTML(f"<p>{text}</p>"), append=True)
 
-
-# Package imports for the first example.
-import numpy as np
-import blosc2
-
-rng = np.random.default_rng(0)

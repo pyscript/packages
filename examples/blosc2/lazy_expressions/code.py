@@ -3,6 +3,11 @@
 # decompressing everything up front.
 # ---------------------------------------------------------------------
 
+import numpy as np
+import blosc2
+
+rng = np.random.default_rng(0)
+
 heading("Computing on compressed data with lazy expressions")
 note(
     "Arithmetic on NDArray objects builds a LazyArray: a small graph "
