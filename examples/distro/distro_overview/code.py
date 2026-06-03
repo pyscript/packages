@@ -8,6 +8,9 @@ It's the modern replacement for the removed `platform.linux_distribution`.
 Docs: https://distro.readthedocs.io/
 """
 from IPython.core.display import display, HTML
+# Package imports for this example.
+import distro
+
 
 heading("Who am I running on?")
 note(
