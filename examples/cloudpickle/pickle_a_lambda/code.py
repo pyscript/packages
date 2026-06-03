@@ -9,6 +9,9 @@ code to remote workers (Dask, Ray, Spark, multiprocessing pools, etc.).
 Docs: https://github.com/cloudpipe/cloudpickle
 """
 from IPython.core.display import display, HTML
+import pickle
+import cloudpickle
+
 
 heading("1. Serializing a lambda")
 note(
