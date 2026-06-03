@@ -10,6 +10,13 @@ Docs: https://contourpy.readthedocs.io
 """
 from IPython.core.display import display, HTML
 
+import numpy as np
+import matplotlib.pyplot as plt
+from contourpy import contour_generator
+
+rng = np.random.default_rng(7)
+
+
 # A smooth scalar field on a 60x60 grid: imagine elevation in metres
 # above sea level over a small patch of countryside.
 grid_x, grid_y = np.meshgrid(

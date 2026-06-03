@@ -1,6 +1,14 @@
 # ---------------------------------------------------------------------
 # Filled contours: regions between adjacent z-levels.
 # ---------------------------------------------------------------------
+import numpy as np
+import matplotlib.pyplot as plt
+from matplotlib.patches import Polygon
+from matplotlib.collections import PatchCollection
+from contourpy import contour_generator
+
+rng = np.random.default_rng(7)
+
 
 heading("Filled contours: bands between levels")
 note(
