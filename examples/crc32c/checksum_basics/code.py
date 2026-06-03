@@ -8,6 +8,9 @@ transit. See https://github.com/ICRAR/crc32c for the project.
 """
 from IPython.core.display import display, HTML
 
+import crc32c
+
+
 heading("1. Computing a CRC32C checksum")
 note(
     "The core function takes bytes and returns a 32-bit unsigned "
