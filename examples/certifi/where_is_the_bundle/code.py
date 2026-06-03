@@ -15,6 +15,9 @@ Docs: https://github.com/certifi/python-certifi
 """
 from IPython.core.display import display, HTML
 
+import certifi
+
+
 heading("1. The path to the trusted CA bundle")
 note(
     "Most TLS-aware libraries accept a path to a PEM file via a "

@@ -1,6 +1,8 @@
 # ---------------------------------------------------------------------
 # Counting and sampling certificates inside the bundle.
 # ---------------------------------------------------------------------
+import certifi
+
 
 heading("How many certificates are in the bundle?")
 note(
