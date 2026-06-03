@@ -34,7 +34,3 @@ def heading(text, level=2):
 
 def note(text):
     display(HTML(f"<p>{text}</p>"), append=True)
-
-
-# Package imports for this example.
-from cryptography.fernet import Fernet, InvalidToken

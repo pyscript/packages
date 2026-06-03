@@ -1,6 +1,11 @@
 # ---------------------------------------------------------------------
 # Section 3: Asymmetric crypto: signing a message with RSA.
 # ---------------------------------------------------------------------
+# Package imports for this example.
+from cryptography.hazmat.primitives import hashes, serialization
+from cryptography.hazmat.primitives.asymmetric import rsa, padding
+from cryptography.exceptions import InvalidSignature
+
 
 heading("3. RSA: generating keys, signing, and verifying")
 note(

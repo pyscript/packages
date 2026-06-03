@@ -10,6 +10,10 @@ Docs: https://cryptography.io/en/latest/fernet/
 """
 from IPython.core.display import display, HTML
 
+# Package imports for this example.
+from cryptography.fernet import Fernet, InvalidToken
+
+
 heading("1. Encrypting a secret note with Fernet")
 note(
     "Imagine you want to stash a private journal entry in local "

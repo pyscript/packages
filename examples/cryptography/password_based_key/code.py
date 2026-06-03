@@ -2,6 +2,14 @@
 # Section 2: Turning a human password into a Fernet key with PBKDF2.
 # ---------------------------------------------------------------------
 
+# Package imports for this example.
+import os
+import base64
+from cryptography.fernet import Fernet, InvalidToken
+from cryptography.hazmat.primitives import hashes
+from cryptography.hazmat.primitives.kdf.pbkdf2 import PBKDF2HMAC
+
+
 heading("2. Password-based encryption with PBKDF2HMAC")
 note(
     "Humans pick passwords; Fernet wants 32 random bytes. A key "
