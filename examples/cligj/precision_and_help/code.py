@@ -5,6 +5,42 @@
 # values, which is useful for shrinking output or normalizing data
 # before diffing.
 
+import json
+import click
+import cligj
+from click.testing import CliRunner
+
+SAMPLE_FEATURES = {
+    "type": "FeatureCollection",
+    "features": [
+        {
+            "type": "Feature",
+            "properties": {"name": "Eiffel Tower"},
+            "geometry": {
+                "type": "Point",
+                "coordinates": [2.2945, 48.8584],
+            },
+        },
+        {
+            "type": "Feature",
+            "properties": {"name": "Colosseum"},
+            "geometry": {
+                "type": "Point",
+                "coordinates": [12.4922, 41.8902],
+            },
+        },
+        {
+            "type": "Feature",
+            "properties": {"name": "Brandenburg Gate"},
+            "geometry": {
+                "type": "Point",
+                "coordinates": [13.3777, 52.5163],
+            },
+        },
+    ],
+}
+
+
 heading("A rounding filter built from cligj options")
 note(
     "We combine <code>features_in_arg</code> with "
