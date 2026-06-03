@@ -1,6 +1,9 @@
 # ---------------------------------------------------------------------
 # compress_into / decompress_into: writing directly into a target.
 # ---------------------------------------------------------------------
+import cramjam
+import numpy as np
+
 
 heading("Avoiding extra allocations with compress_into")
 note(

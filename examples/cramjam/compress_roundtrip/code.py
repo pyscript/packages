@@ -10,6 +10,9 @@ Project page: https://github.com/milesgranger/pyrus-cramjam
 """
 from IPython.core.display import display, HTML
 
+import cramjam
+
+
 heading("Round-tripping bytes through Snappy")
 note(
     "We'll take a chunk of repetitive text, compress it with Snappy, "

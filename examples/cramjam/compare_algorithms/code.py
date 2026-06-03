@@ -1,6 +1,9 @@
 # ---------------------------------------------------------------------
 # Compare cramjam's built-in algorithms on the same input.
 # ---------------------------------------------------------------------
+import cramjam
+import matplotlib.pyplot as plt
+
 
 heading("Which algorithm should I reach for?")
 note(
