@@ -18,11 +18,3 @@ def heading(text, level=2):
 def note(text):
     display(HTML(f"<p>{text}</p>"), append=True)
 
-
-import numpy as np
-import matplotlib.pyplot as plt
-from iminuit import Minuit
-from iminuit.cost import UnbinnedNLL
-from scipy.stats import norm
-
-rng = np.random.default_rng(7)

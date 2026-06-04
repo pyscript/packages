@@ -7,6 +7,14 @@ Docs: https://scikit-hep.org/iminuit/
 """
 from IPython.core.display import display, HTML
 
+import numpy as np
+import matplotlib.pyplot as plt
+from iminuit import Minuit
+from iminuit.cost import LeastSquares
+
+rng = np.random.default_rng(2024)
+
+
 heading("Fitting an exponential decay")
 note(
     "We have noisy measurements of a signal that we believe decays "

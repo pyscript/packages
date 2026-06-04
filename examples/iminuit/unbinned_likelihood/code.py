@@ -2,6 +2,14 @@
 # Unbinned maximum-likelihood fit of a Gaussian, with parameter limits.
 # ---------------------------------------------------------------------
 
+import numpy as np
+import matplotlib.pyplot as plt
+from iminuit import Minuit
+from iminuit.cost import UnbinnedNLL
+from scipy.stats import norm
+
+rng = np.random.default_rng(7)
+
 heading("Estimating a Gaussian's parameters from samples")
 note(
     "Imagine a sensor reports 800 measurements that we expect to be "
