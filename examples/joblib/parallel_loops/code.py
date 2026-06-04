@@ -8,6 +8,14 @@
 # dispatches the captured calls. See:
 # https://joblib.readthedocs.io/en/stable/parallel.html
 # ---------------------------------------------------------------------
+import time
+import math
+import numpy as np
+import matplotlib.pyplot as plt
+from joblib import Parallel, delayed
+
+rng = np.random.default_rng(0)
+
 
 heading("Parallel loops with joblib")
 note(

@@ -6,6 +6,13 @@
 # See https://joblib.readthedocs.io/en/stable/persistence.html
 # ---------------------------------------------------------------------
 
+import os
+import numpy as np
+import joblib
+
+rng = np.random.default_rng(7)
+
+
 heading("Serializing objects with joblib.dump and joblib.load")
 note(
     "We'll build a small dictionary holding metadata and a couple "

@@ -7,6 +7,11 @@ See https://joblib.readthedocs.io/en/stable/memory.html
 """
 from IPython.core.display import display, HTML
 
+import time
+import numpy as np
+from joblib import Memory
+
+
 # A Memory object is the entry point for caching. The `location`
 # is a directory where results are persisted; in Pyodide this is
 # the in-browser virtual file system, so caches survive within a

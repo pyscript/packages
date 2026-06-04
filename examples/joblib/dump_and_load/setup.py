@@ -15,10 +15,3 @@ def heading(text, level=2):
 
 def note(text):
     display(HTML(f"<p>{text}</p>"), append=True)
-
-
-import os
-import numpy as np
-import joblib
-
-rng = np.random.default_rng(7)

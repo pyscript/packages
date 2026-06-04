@@ -16,11 +16,3 @@ def heading(text, level=2):
 def note(text):
     display(HTML(f"<p>{text}</p>"), append=True)
 
-
-import time
-import math
-import numpy as np
-import matplotlib.pyplot as plt
-from joblib import Parallel, delayed
-
-rng = np.random.default_rng(0)
