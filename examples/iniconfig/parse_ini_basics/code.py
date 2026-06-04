@@ -13,6 +13,8 @@ as it does here in the browser.
 """
 from IPython.core.display import display, HTML
 
+import iniconfig
+
 heading("A made-up app config")
 note(
     "Imagine the INI text below lives in <code>app.ini</code> on "
