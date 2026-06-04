@@ -9,6 +9,12 @@ Docs: https://unidata.github.io/netcdf4-python/
 """
 from IPython.core.display import display, HTML
 
+import numpy as np
+from netCDF4 import Dataset
+
+rng = np.random.default_rng(0)
+
+
 # We use diskless=True so the file lives in browser memory rather than
 # touching a real filesystem. With persist=False the bytes vanish on close.
 ocean = Dataset("ocean_buoy.nc", mode="w", diskless=True, persist=False,

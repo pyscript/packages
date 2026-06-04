@@ -7,6 +7,13 @@
 # file). Here we build a tiny synthetic temperature grid and use
 # `num2date` to turn the numeric time axis into real datetimes.
 
+import numpy as np
+import matplotlib.pyplot as plt
+from netCDF4 import Dataset, num2date
+
+rng = np.random.default_rng(0)
+
+
 heading("A gridded temperature field with groups")
 
 climate = Dataset("climate.nc", mode="w", diskless=True, persist=False,

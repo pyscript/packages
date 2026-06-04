@@ -15,10 +15,3 @@ def heading(text, level=2):
 
 def note(text):
     display(HTML(f"<p>{text}</p>"), append=True)
-
-
-import numpy as np
-import matplotlib.pyplot as plt
-from netCDF4 import Dataset, num2date
-
-rng = np.random.default_rng(0)

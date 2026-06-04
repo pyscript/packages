@@ -7,6 +7,12 @@
 # can be sent over the network, stored in a database, or re-opened as a
 # read-only Dataset by passing them back via the `memory` kwarg.
 
+import numpy as np
+from netCDF4 import Dataset
+
+rng = np.random.default_rng(0)
+
+
 heading("Writing a netCDF file straight into a bytes buffer")
 
 # Step 1: build a tiny weather station record in memory.
