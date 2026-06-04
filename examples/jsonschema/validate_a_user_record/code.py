@@ -8,6 +8,11 @@ https://python-jsonschema.readthedocs.io/ for the full story.
 """
 from IPython.core.display import display, HTML
 
+# Package imports for this example.
+import jsonschema
+from jsonschema import validate, ValidationError
+
+
 # A schema describing a "user" object: required fields, types, ranges,
 # string formats, and an enum for role.
 user_schema = {

@@ -3,6 +3,10 @@
 # the first one. Great for forms and bulk data validation.
 # ---------------------------------------------------------------------
 
+import jsonschema
+from jsonschema import validate, ValidationError
+
+
 heading("Lazy validation with iter_errors")
 note(
     "<code>validate()</code> stops at the first failure. For richer "

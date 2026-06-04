@@ -4,6 +4,12 @@
 # for the deprecated RefResolver.
 # ---------------------------------------------------------------------
 
+import jsonschema
+from jsonschema import Draft202012Validator, ValidationError
+from referencing import Registry, Resource
+from referencing.jsonschema import DRAFT202012
+
+
 heading("Composing schemas with a Registry")
 note(
     "We define a small <code>address</code> schema once, register it "
