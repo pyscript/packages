@@ -8,6 +8,15 @@ about channels and sampling) and `Raw` (continuous time series).
 Here we build both from scratch using NumPy arrays.
 """
 from IPython.core.display import display, HTML
+import numpy as np
+import matplotlib.pyplot as plt
+import mne
+
+# Quiet MNE's default INFO chatter so the example output stays focused.
+mne.set_log_level("WARNING")
+
+rng = np.random.default_rng(7)
+
 
 heading("1. Building a synthetic EEG recording")
 note(

@@ -40,12 +40,3 @@ def heading(text, level=2):
 def note(text):
     display(HTML(f"<p>{text}</p>"), append=True)
 
-
-import numpy as np
-import matplotlib.pyplot as plt
-import mne
-
-# Quiet MNE's default INFO chatter so the example output stays focused.
-mne.set_log_level("WARNING")
-
-rng = np.random.default_rng(7)
