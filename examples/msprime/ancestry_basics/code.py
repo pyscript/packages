@@ -9,6 +9,11 @@ Docs: https://tskit.dev/msprime/docs/stable/
 """
 from IPython.core.display import display, HTML
 
+import numpy as np
+import matplotlib.pyplot as plt
+import msprime
+
+
 heading("A small coalescent simulation")
 note(
     "We sample 6 diploid individuals (so 12 chromosomes) from a "
