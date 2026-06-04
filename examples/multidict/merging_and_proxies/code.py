@@ -1,6 +1,8 @@
 # ---------------------------------------------------------------------
 # extend, update, merge, and read-only proxies.
 # ---------------------------------------------------------------------
+from multidict import MultiDict, MultiDictProxy
+
 
 heading("Building a query string piece by piece")
 note(

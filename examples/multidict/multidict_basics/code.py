@@ -11,6 +11,9 @@ Docs: https://multidict.aio-libs.org
 """
 from IPython.core.display import display, HTML
 
+from multidict import MultiDict
+
+
 # Imagine the query string of a search URL:
 #   ?tag=python&tag=async&tag=web&sort=recent
 # A regular dict would lose two of the three tags. MultiDict keeps them all.

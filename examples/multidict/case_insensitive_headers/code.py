@@ -1,6 +1,8 @@
 # ---------------------------------------------------------------------
 # CIMultiDict: case-insensitive keys for HTTP-style headers.
 # ---------------------------------------------------------------------
+from multidict import MultiDict, CIMultiDict, istr
+
 
 heading("HTTP headers with CIMultiDict")
 note(
