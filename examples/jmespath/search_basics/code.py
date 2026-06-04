@@ -7,6 +7,9 @@ See https://jmespath.org/tutorial.html for the language reference.
 """
 from IPython.core.display import display, HTML
 
+import jmespath
+
+
 # A made-up response from a "fleet" API: a handful of delivery vans,
 # each with some nested details.
 fleet = {

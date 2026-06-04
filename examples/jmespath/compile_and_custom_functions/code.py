@@ -1,6 +1,9 @@
 # When you'll run the same query against many documents, compile it once
 # and reuse the parsed expression. You can also extend the language with
 # your own functions via jmespath.Options.
+import jmespath
+from jmespath import functions
+
 
 # Imagine a stream of telemetry packets from weather stations.
 packets = [
