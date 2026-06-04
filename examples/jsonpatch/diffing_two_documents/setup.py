@@ -16,11 +16,3 @@ def heading(text, level=2):
 def note(text):
     display(HTML(f"<p>{text}</p>"), append=True)
 
-
-import json
-import jsonpatch
-
-
-def show_json(label, obj):
-    pretty = json.dumps(obj, indent=2)
-    display(HTML(f"<strong>{label}</strong><pre>{pretty}</pre>"), append=True)

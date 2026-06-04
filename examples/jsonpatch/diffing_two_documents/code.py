@@ -1,6 +1,14 @@
 # ---------------------------------------------------------------------
 # Section 2: Generate a patch automatically by diffing two documents.
 # ---------------------------------------------------------------------
+import json
+import jsonpatch
+
+
+def show_json(label, obj):
+    pretty = json.dumps(obj, indent=2)
+    display(HTML(f"<strong>{label}</strong><pre>{pretty}</pre>"), append=True)
+
 
 heading("Diffing two versions of a document")
 note(

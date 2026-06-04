@@ -10,6 +10,11 @@ at https://python-json-patch.readthedocs.io/.
 """
 from IPython.core.display import display, HTML
 
+# Package imports for this example.
+import json
+import jsonpatch
+
+
 
 def show_json(label, obj):
     """Render a labeled JSON blob as a <pre> block."""
