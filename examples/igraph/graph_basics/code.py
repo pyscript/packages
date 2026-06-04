@@ -8,6 +8,9 @@ connected, and how short are the chains of acquaintance?
 Docs: https://python.igraph.org
 """
 from IPython.core.display import display, HTML
+import igraph as ig
+import matplotlib.pyplot as plt
+
 
 heading("A small office social network")
 note(
