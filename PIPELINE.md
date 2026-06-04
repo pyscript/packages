@@ -3,7 +3,9 @@
 This document walks through generating PyScript examples for many
 packages at once, using the LLM-assisted pipeline that lives in this
 repository. It is written for an operator running the pipeline
-end-to-end without supervision.
+end-to-end without supervision; a separate "Reviewing PRs" section
+near the end covers what someone reviewing the resulting pull
+requests needs to know.
 
 If you only want to run the static site locally, or contribute a
 single hand-written example via a regular PR, see the project's main
@@ -323,7 +325,106 @@ Repeat for every branch. You can do this gradually - the branches
 sit on your fork or the canonical repo waiting for review, so
 there's no rush.
 
-### Step 6 (after PRs are merged): re-bake examples into the API
+## Reviewing PRs
+
+This section is for someone reviewing the example PRs the operator
+has opened. You don't need to have run any of the pipeline yourself
+to review; you only need a clone of the repository and Python 3.12
+or newer.
+
+### Get the branch locally
+
+Fetch any branches the operator has pushed but you don't yet have
+locally, then check out the branch for the package you want to
+review:
+
+```sh
+git fetch
+git checkout examples/<package>
+```
+
+If you're reviewing a PR from a contributor's fork, you can fetch
+their branch directly from the PR page on GitHub (the "checkout
+with command line" link gives you the right `git fetch` invocation
+to pull their branch into a local `pr/<n>` branch).
+
+### Run the examples locally
+
+From the repository root:
+
+```sh
+python check.py
+```
+
+With no argument and a checked-out `examples/<package>` branch,
+`check.py` infers the package name from the branch and starts a
+local web server, printing a URL to open. The page loads each of
+the package's examples into a [PyScript editor](
+https://docs.pyscript.net/2026.3.1/user-guide/editor/) using a
+dropdown to switch between them.
+
+To actually run an example: scroll to the bottom of the editor for
+that example, hover over it, and click the play button that
+appears at the bottom-right corner of the editor toolbar. The
+example's setup runs invisibly first, then the visible code runs,
+and any output appears beneath the editor.
+
+If port 8000 is already in use on your machine, pass `--port` to
+pick a different one:
+
+```sh
+python check.py --port 8765
+```
+
+To check more than one package without restarting the server,
+change the `package` query argument in the URL in your browser and
+reload. For example, after starting the server with the `pandas`
+branch checked out, you can also look at `numpy`'s examples (if
+they exist on disk) by changing the URL's `?package=pandas` to
+`?package=numpy` and reloading.
+
+### What to look at
+
+Use the same review checklist as the operator (see step 5 above):
+does each example do something genuinely useful with the package;
+does it run cleanly in PyScript; are the explanations clear and
+not hallucinated; are the helpers used as intended; does the
+progression of examples make sense.
+
+### How to give feedback
+
+If you have small, concrete improvements - typo fixes, clearer
+wording, a better example variant - the simplest path is to push
+commits directly to the `examples/<package>` branch on the PR.
+The PR will update automatically.
+
+If you have larger concerns or aren't sure about a change, leave a
+comment on the PR. The operator (or another reviewer) can act on
+the feedback.
+
+If the example needs a fundamentally different approach and you
+don't want to rewrite it yourself, request changes on the PR with
+a clear description of what's missing or wrong, and the operator
+can re-run that single package through the pipeline (see "I want
+to re-run the pipeline for one specific package" in the
+troubleshooting section) to produce a fresh attempt.
+
+### Editing the examples directly
+
+The files you'll be editing live under `examples/<package>/`, one
+sub-directory per example. Each sub-directory has at most three
+files: `config.toml` (PyScript runtime config), `code.py` (the
+visible code), and an optional `setup.py` (invisible boilerplate
+that runs before the code). The display order is fixed by
+`order.json` at the package root if present, otherwise alphabetical
+by directory name.
+
+After editing, re-run `python check.py` (or just reload the page
+if the server is still running) to see your changes take effect.
+A page reload re-fetches the examples from disk, so you don't have
+to restart the server between edits.
+
+## After PRs are merged: re-bake examples into the API
 
 Once one or more example PRs have been merged into `main`, run
 `build_data.py` again to fold the new examples into the published
