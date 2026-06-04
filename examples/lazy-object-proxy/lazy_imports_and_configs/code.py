@@ -2,6 +2,9 @@
 # Two practical patterns: lazy imports and a lazy settings registry.
 # ---------------------------------------------------------------------
 
+import lazy_object_proxy
+
+
 heading("Pattern 1: lazy imports")
 note(
     "Wrap a module import in a Proxy so the cost of importing is "

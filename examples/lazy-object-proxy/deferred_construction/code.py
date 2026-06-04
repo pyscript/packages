@@ -11,6 +11,9 @@ Docs: https://python-lazy-object-proxy.readthedocs.io/
 """
 from IPython.core.display import display, HTML
 
+import lazy_object_proxy
+
+
 heading("A proxy that pretends to be an expensive report")
 note(
     "Imagine loading a large report from disk or the network. We "
