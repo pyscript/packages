@@ -17,12 +17,3 @@ def heading(text, level=2):
 
 def note(text):
     display(HTML(f"<p>{text}</p>"), append=True)
-
-
-import matplotlib
-matplotlib.use("module://matplotlib_pyodide.html5_canvas_backend")
-
-import numpy as np
-import matplotlib.pyplot as plt
-
-rng = np.random.default_rng(7)

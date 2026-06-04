@@ -2,6 +2,18 @@
 # The wasm_backend: static, Agg-rendered figures.
 # ---------------------------------------------------------------------
 
+# This example demonstrates the OTHER backend that matplotlib-pyodide
+# ships: wasm_backend, which rasterizes via Agg and shows the result
+# as a static image. Selecting it must happen before pyplot import.
+import matplotlib
+matplotlib.use("module://matplotlib_pyodide.wasm_backend")
+
+import numpy as np
+import matplotlib.pyplot as plt
+
+rng = np.random.default_rng(7)
+
+
 heading("Switching to the static wasm_backend")
 note(
     "The <code>wasm_backend</code> renders matplotlib's familiar Agg "

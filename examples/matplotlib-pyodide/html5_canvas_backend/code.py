@@ -18,6 +18,17 @@ For this example, the html5_canvas_backend has already been activated
 in setup.py before pyplot was imported.
 """
 from IPython.core.display import display, HTML
+# Switch matplotlib to the interactive HTML5 canvas backend provided by
+# matplotlib-pyodide. This must happen BEFORE pyplot is imported, because
+# pyplot binds to whatever backend is active at import time.
+import matplotlib
+matplotlib.use("module://matplotlib_pyodide.html5_canvas_backend")
+
+import numpy as np
+import matplotlib.pyplot as plt
+
+rng = np.random.default_rng(7)
+
 
 heading("matplotlib-pyodide: an interactive canvas plot")
 note(

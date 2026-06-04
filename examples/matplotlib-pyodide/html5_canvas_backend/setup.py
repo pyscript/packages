@@ -39,14 +39,3 @@ def heading(text, level=2):
 def note(text):
     display(HTML(f"<p>{text}</p>"), append=True)
 
-
-# Switch matplotlib to the interactive HTML5 canvas backend provided by
-# matplotlib-pyodide. This must happen BEFORE pyplot is imported, because
-# pyplot binds to whatever backend is active at import time.
-import matplotlib
-matplotlib.use("module://matplotlib_pyodide.html5_canvas_backend")
-
-import numpy as np
-import matplotlib.pyplot as plt
-
-rng = np.random.default_rng(7)

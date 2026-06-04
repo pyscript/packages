@@ -2,6 +2,15 @@
 # Multi-panel dashboards on the html5_canvas_backend.
 # ---------------------------------------------------------------------
 
+import matplotlib
+matplotlib.use("module://matplotlib_pyodide.html5_canvas_backend")
+
+import numpy as np
+import matplotlib.pyplot as plt
+
+rng = np.random.default_rng(7)
+
+
 heading("A four-panel dashboard")
 note(
     "Once a backend is selected, you write ordinary matplotlib. "
@@ -44,7 +53,7 @@ ax_bar.set_title("Mean temperature per sensor")
 ax_bar.set_ylabel("°C")
 
 # Bottom-right: a box plot to compare spread.
-ax_box.boxplot(readings.T, tick_labels=sensor_names, patch_artist=True,
+ax_box.boxplot(readings.T, labels=sensor_names, patch_artist=True,
                boxprops=dict(facecolor="#eaeaf2"))
 ax_box.set_title("Spread per sensor")
 ax_box.set_ylabel("°C")
