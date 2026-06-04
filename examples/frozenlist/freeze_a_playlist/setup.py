@@ -35,7 +35,3 @@ def heading(text, level=2):
 
 def note(text):
     display(HTML(f"<p>{text}</p>"), append=True)
-
-
-# Package import for this example.
-from frozenlist import FrozenList

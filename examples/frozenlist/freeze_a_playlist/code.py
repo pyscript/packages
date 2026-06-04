@@ -10,6 +10,10 @@ Docs: https://frozenlist.aio-libs.org
 """
 from IPython.core.display import display, HTML
 
+# Package import for this example.
+from frozenlist import FrozenList
+
+
 # Build a playlist mutably, the same way you'd build a regular list.
 playlist = FrozenList()
 playlist.append("Take Five")
