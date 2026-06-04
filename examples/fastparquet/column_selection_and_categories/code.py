@@ -17,7 +17,7 @@ countries = ["UK", "US", "DE", "FR", "JP", "BR"]
 
 orders = pd.DataFrame({
     "order_id": np.arange(n_orders),
-    "genre": rng.choice(genres, size=n_orders),
+    "genre": pd.Categorical(rng.choice(genres, size=n_orders), categories=genres),
     "country": rng.choice(countries, size=n_orders),
     "price": rng.uniform(5, 35, size=n_orders).round(2),
     "quantity": rng.integers(1, 6, size=n_orders),

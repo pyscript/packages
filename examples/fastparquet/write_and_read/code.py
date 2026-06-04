@@ -9,6 +9,12 @@ that integrates closely with pandas.
 Docs: https://fastparquet.readthedocs.io
 """
 from IPython.core.display import display, HTML
+import numpy as np
+import pandas as pd
+from fastparquet import ParquetFile, write
+
+rng = np.random.default_rng(7)
+
 
 # A small synthetic dataset: temperature readings from weather stations.
 n_rows = 500

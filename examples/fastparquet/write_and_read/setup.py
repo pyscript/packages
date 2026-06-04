@@ -39,10 +39,3 @@ def heading(text, level=2):
 
 def note(text):
     display(HTML(f"<p>{text}</p>"), append=True)
-
-
-import numpy as np
-import pandas as pd
-from fastparquet import ParquetFile, write
-
-rng = np.random.default_rng(7)
