@@ -1,6 +1,10 @@
 # ---------------------------------------------------------------------
 # Teaching msgpack about types it doesn't know natively.
 # ---------------------------------------------------------------------
+import msgpack
+from decimal import Decimal
+from fractions import Fraction
+
 
 heading("Custom types: Decimal and Fraction via ExtType")
 note(
@@ -64,7 +68,8 @@ note(
     "Decimal and Fraction came back as themselves, not as floats or "
     "strings, so arithmetic still works as intended."
 )
+tax_as_decimal = Decimal(restored['tax_rate'].numerator) / Decimal(restored['tax_rate'].denominator)
 display(HTML(
     f"<pre>subtotal * tax_rate = "
-    f"{restored['subtotal'] * restored['tax_rate']}</pre>"
+    f"{restored['subtotal'] * tax_as_decimal}</pre>"
 ), append=True)

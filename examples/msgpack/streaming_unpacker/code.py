@@ -1,6 +1,9 @@
 # ---------------------------------------------------------------------
 # Streaming: many small messages concatenated into one byte stream.
 # ---------------------------------------------------------------------
+import msgpack
+from io import BytesIO
+
 
 heading("Streaming unpack: a log of trades")
 note(

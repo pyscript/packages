@@ -6,6 +6,10 @@ Docs: https://msgpack-python.readthedocs.io/
 """
 from IPython.core.display import display, HTML
 
+import msgpack
+import json
+
+
 # A small payload that might fly between two services: a sensor reading
 # from a fictional weather station.
 reading = {
