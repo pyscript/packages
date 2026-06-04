@@ -11,6 +11,10 @@ Docs and source: https://github.com/Infinidat/munch
 
 from IPython.core.display import display, HTML
 
+# Package imports for this example.
+from munch import Munch, munchify, unmunchify
+
+
 heading("1. A Munch is just a dict with attribute access")
 note(
     "Build a small profile for an imaginary coffee-shop customer. "
@@ -48,7 +52,7 @@ note(
 
 raw_order = {
     "order_id": "A-1042",
-    "items": [
+    "line_items": [          # renamed from "items"
         {"name": "croissant", "qty": 2},
         {"name": "flat white", "qty": 1},
     ],
@@ -57,7 +61,7 @@ raw_order = {
 
 order = munchify(raw_order)
 note(f"order.order_id &rarr; <strong>{order.order_id}</strong>")
-note(f"order.items[0].name &rarr; <strong>{order.items[0].name}</strong>")
+note(f"order.line_items[0].name &rarr; <strong>{order.line_items[0].name}</strong>")
 note(f"order.totals.subtotal &rarr; <strong>{order.totals.subtotal}</strong>")
 
 # Going back is just as easy.

@@ -19,6 +19,3 @@ def heading(text, level=2):
 def note(text):
     display(HTML(f"<p>{text}</p>"), append=True)
 
-
-from munch import Munch, munchify, unmunchify
-import json

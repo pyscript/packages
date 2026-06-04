@@ -1,6 +1,8 @@
 # ---------------------------------------------------------------------
 # DefaultMunch and DefaultFactoryMunch: graceful handling of missing keys.
 # ---------------------------------------------------------------------
+from munch import Munch, DefaultMunch, DefaultFactoryMunch
+
 
 heading("DefaultMunch: a sentinel for missing attributes")
 note(

@@ -1,6 +1,9 @@
 # ---------------------------------------------------------------------
 # Munch + JSON: a comfortable way to work with API-shaped data.
 # ---------------------------------------------------------------------
+from munch import Munch, munchify, unmunchify
+import json
+
 
 heading("Parsing JSON into a Munch")
 note(
