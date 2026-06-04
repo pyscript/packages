@@ -8,6 +8,9 @@ details: https://github.com/pydantic/jiter
 """
 from IPython.core.display import display, HTML
 
+import jiter
+
+
 # jiter.from_json expects bytes -- note the leading `b`.
 weather_report = b"""
 {

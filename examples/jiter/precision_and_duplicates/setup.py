@@ -16,6 +16,3 @@ def heading(text, level=2):
 def note(text):
     display(HTML(f"<p>{text}</p>"), append=True)
 
-
-import jiter
-from decimal import Decimal

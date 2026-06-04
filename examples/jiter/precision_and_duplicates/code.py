@@ -1,6 +1,9 @@
 # ---------------------------------------------------------------------
 # Numeric precision and strict-mode options.
 # ---------------------------------------------------------------------
+import jiter
+from decimal import Decimal
+
 
 heading("Decimals and duplicate-key detection")
 note(
