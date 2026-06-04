@@ -6,6 +6,9 @@
 # nudge a single value (a window width, a slider, a mouse position)
 # and let the solver propagate the change. That's what edit variables
 # are for.
+import kiwisolver as kiwi
+import matplotlib.pyplot as plt
+
 
 heading("A resizable three-pane layout")
 note(

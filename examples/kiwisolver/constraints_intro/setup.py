@@ -40,7 +40,3 @@ def heading(text, level=2):
 def note(text):
     display(HTML(f"<p>{text}</p>"), append=True)
 
-
-# Kiwi is the Python binding to the Cassowary constraint solver.
-# It's the same engine that powers many GUI layout systems.
-import kiwisolver as kiwi

@@ -6,6 +6,9 @@
 # ones win. REQUIRED constraints must hold; the others are honored
 # in order of strength, with weaker ones giving way first.
 
+import kiwisolver as kiwi
+
+
 heading("Picking a font size that fits")
 note(
     "We want a heading to be 24pt, but it must also fit inside a "

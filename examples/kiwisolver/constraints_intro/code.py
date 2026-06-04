@@ -8,6 +8,10 @@ https://kiwisolver.readthedocs.io/en/latest/basis/constraints_definition.html
 """
 from IPython.core.display import display, HTML
 
+# Kiwi is the Python binding to the Cassowary constraint solver.
+# It's the same engine that powers many GUI layout systems.
+import kiwisolver as kiwi
+
 # Variables represent unknown numbers. The solver will assign values
 # to them when we ask it to.
 left_a = kiwi.Variable("left_a")
