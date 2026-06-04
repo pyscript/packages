@@ -6,6 +6,10 @@
 # data coordinate. Together they're a great toolkit for explaining
 # what's interesting about a field.
 
+import numpy as np
+import matplotlib.pyplot as plt
+
+
 heading("Heatmap with contour lines and an annotated peak")
 note(
     "We build a synthetic terrain by summing two 2D Gaussians, then "

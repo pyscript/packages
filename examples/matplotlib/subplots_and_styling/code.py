@@ -3,6 +3,10 @@
 # ---------------------------------------------------------------------
 # `plt.subplots(rows, cols)` returns a Figure and a 2D array of Axes.
 # Each Axes is an independent plotting area you can address by index.
+import numpy as np
+import matplotlib.pyplot as plt
+
+rng = np.random.default_rng(7)
 
 heading("A 2x2 dashboard of chart types")
 note(
@@ -55,7 +59,7 @@ ax.legend(loc="upper left", fontsize=8)
 
 # Bottom-right: box plot comparing weekdays and weekends.
 ax = axes[1, 1]
-ax.boxplot([weekday, weekend], tick_labels=["Weekday", "Weekend"],
+ax.boxplot([weekday, weekend], labels=["Weekday", "Weekend"],
            patch_artist=True,
            boxprops=dict(facecolor="lightgreen"))
 ax.set_title("Daily takings: weekday vs. weekend")
