@@ -11,9 +11,12 @@ typical pattern is:
 See the Matplotlib gallery for many more ideas:
 https://matplotlib.org/stable/gallery/index.html
 """
+from IPython.core.display import display, HTML
+
 import numpy as np
 import matplotlib.pyplot as plt
-from IPython.core.display import display, HTML
+
+rng = np.random.default_rng(7)
 
 
 # ---------------------------------------------------------------------
