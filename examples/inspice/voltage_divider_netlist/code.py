@@ -2,6 +2,13 @@
 # Building a resistor ladder and computing node voltages by hand.
 # ---------------------------------------------------------------------
 
+import numpy as np
+import matplotlib.pyplot as plt
+import InSpice
+from InSpice import Circuit
+from InSpice.Unit import u_V, u_Hz, u_Ohm, u_uF, u_kHz, u_kOhm, u_ms
+
+
 heading("2. A four-resistor voltage divider")
 note(
     "InSpice circuits compose nicely with ordinary Python: we can "

@@ -1,6 +1,12 @@
 # ---------------------------------------------------------------------
 # Defining a reusable RC stage as a SubCircuit and cascading copies.
 # ---------------------------------------------------------------------
+import numpy as np
+import matplotlib.pyplot as plt
+import InSpice
+from InSpice import Circuit, SubCircuit, SubCircuitFactory
+from InSpice.Unit import u_V, u_Hz, u_Ohm, u_uF, u_kHz, u_kOhm, u_ms
+
 
 heading("3. Cascading RC stages with SubCircuit")
 note(
@@ -28,7 +34,7 @@ class RCStage(SubCircuitFactory):
 
 cascade = Circuit("Three-stage RC cascade")
 cascade.SinusoidalVoltageSource(
-    "src", "in", cascade.gnd,
+    "src", "input", cascade.gnd,
     amplitude=1 @ u_V, frequency=1 @ u_kHz,
 )
 # Register the subcircuit definition once...
@@ -37,9 +43,9 @@ cascade.subcircuit(RCStage(resistance=1 @ u_kOhm,
 
 # ...then instantiate it three times, wiring stage outputs to the
 # next stage's input.
-cascade.X("stage1", "rc_stage", "in", "n1")
+cascade.X("stage1", "rc_stage", "input", "n1")
 cascade.X("stage2", "rc_stage", "n1", "n2")
-cascade.X("stage3", "rc_stage", "n2", "out")
+cascade.X("stage3", "rc_stage", "n2", "output")
 
 note("The generated netlist shows both the .subckt block and the X-instances:")
 display(HTML(f"<pre>{cascade}</pre>"), append=True)

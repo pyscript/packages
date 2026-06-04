@@ -17,10 +17,3 @@ def heading(text, level=2):
 
 def note(text):
     display(HTML(f"<p>{text}</p>"), append=True)
-
-
-import numpy as np
-import matplotlib.pyplot as plt
-import InSpice
-from InSpice import Circuit
-from InSpice.Unit import u_V, u_Hz, u_Ohm, u_uF, u_kHz, u_kOhm, u_ms
