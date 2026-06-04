@@ -11,6 +11,8 @@ Docs: https://github.com/kjd/idna
 """
 from IPython.core.display import display, HTML
 
+import idna
+
 # A small address book of domains in their human-readable Unicode form.
 unicode_domains = [
     "ドメイン.テスト",        # Japanese: "domain.test"
