@@ -35,5 +35,3 @@ def heading(text, level=2):
 def note(text):
     display(HTML(f"<p>{text}</p>"), append=True)
 
-
-from optlang import Model, Variable, Constraint, Objective

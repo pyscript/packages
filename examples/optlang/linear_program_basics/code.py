@@ -16,6 +16,8 @@ This is the classic GLPK example, recast as a workshop story.
 Docs: https://optlang.readthedocs.io
 """
 from IPython.core.display import display, HTML
+from optlang import Model, Variable, Constraint, Objective
+
 
 heading("A small workshop's production plan")
 note(
