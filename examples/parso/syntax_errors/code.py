@@ -26,7 +26,7 @@ x = 1 +
 # Pretty-print the source with line numbers so the errors line up.
 numbered = "<pre style='background:#f6f8fa;padding:8px'>"
 for i, line in enumerate(broken_source.splitlines(), start=1):
-    numbered += f"{i:>3}  {line}\\n"
+    numbered += f"{i:>3}  {line}\n"
 numbered += "</pre>"
 display(HTML(numbered), append=True)
 

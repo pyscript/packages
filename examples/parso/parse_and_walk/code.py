@@ -9,6 +9,9 @@ linting, and code analysis. Docs: https://parso.readthedocs.io
 """
 from IPython.core.display import display, HTML
 
+import parso
+
+
 # A small but realistic snippet of Python to chew on.
 source = """\
 import math
