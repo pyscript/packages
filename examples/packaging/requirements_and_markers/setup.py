@@ -19,8 +19,3 @@ def heading(text, level=2):
 def note(text):
     display(HTML(f"<p>{text}</p>"), append=True)
 
-
-import pandas as pd
-from packaging.requirements import Requirement
-from packaging.markers import Marker
-from packaging.version import Version

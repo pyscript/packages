@@ -12,6 +12,11 @@ Docs: https://packaging.pypa.io/
 import pandas as pd
 from IPython.core.display import display, HTML
 
+# Package imports for this example.
+from packaging.version import Version, InvalidVersion
+from packaging.specifiers import SpecifierSet
+
+
 heading("Parsing and comparing versions")
 note(
     "PEP 440 says version strings have a precise structure: an "

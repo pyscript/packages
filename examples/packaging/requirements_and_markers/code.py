@@ -1,6 +1,11 @@
 # ---------------------------------------------------------------------
 # Parsing PEP 508 requirement strings and evaluating environment markers.
 # ---------------------------------------------------------------------
+import pandas as pd
+from packaging.requirements import Requirement
+from packaging.markers import Marker
+from packaging.version import Version
+
 
 heading("Parsing requirement strings")
 note(

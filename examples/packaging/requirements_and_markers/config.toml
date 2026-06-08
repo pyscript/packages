@@ -1,1 +1,1 @@
-packages = ["packaging"]
+packages = ["packaging", "pandas"]
