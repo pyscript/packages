@@ -10,6 +10,9 @@ See https://en.wikipedia.org/wiki/Newick_format for a primer.
 """
 from IPython.core.display import display, HTML
 
+import newick
+
+
 # A tiny phylogeny relating four primates. The numbers after the colons
 # are branch lengths (e.g. millions of years of divergence).
 primates = "((Human:6.0,Chimp:6.0)HomoPan:2.0,(Gorilla:8.0,Orangutan:14.0)Great:1.0)Primates;"
