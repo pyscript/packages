@@ -10,6 +10,13 @@ Docs: https://docs.opencv.org/4.x/
 """
 from IPython.core.display import display, HTML
 
+import numpy as np
+import cv2
+import matplotlib.pyplot as plt
+
+rng = np.random.default_rng(7)
+
+
 heading("Drawing on a blank canvas")
 note(
     "We start with a black 200x300 BGR image (a NumPy array of "
