@@ -11,6 +11,10 @@ Docs: https://nlopt.readthedocs.io/en/latest/NLopt_Python_Reference/
 """
 from IPython.core.display import display, HTML
 
+import numpy as np
+import nlopt
+
+
 heading("Finding the bottom of a tilted bowl")
 note(
     "We minimize f(x, y) = (x - 3)^2 + 2 * (y + 1)^2. "

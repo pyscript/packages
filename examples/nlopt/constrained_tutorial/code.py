@@ -2,6 +2,10 @@
 # The classic NLopt tutorial problem: minimize sqrt(x2)
 # subject to x2 >= (a*x1 + b)^3 for two pairs (a, b).
 # ---------------------------------------------------------------------
+import numpy as np
+import nlopt
+import matplotlib.pyplot as plt
+
 
 heading("Constrained minimization with two cubic inequalities")
 note(

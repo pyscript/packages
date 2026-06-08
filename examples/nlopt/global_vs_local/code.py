@@ -4,6 +4,11 @@
 # a classic test problem with a forest of local minima.
 # ---------------------------------------------------------------------
 
+import numpy as np
+import nlopt
+import matplotlib.pyplot as plt
+
+
 heading("Global optimization on the Rastrigin function")
 note(
     "Rastrigin in 2D: "
