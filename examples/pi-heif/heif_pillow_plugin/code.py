@@ -6,12 +6,18 @@ for photos. pi-heif provides a decoder so you can open these files
 just like JPEG or PNG.
 
 We don't have a real .heic file lying around in the browser, so we'll
-fetch a tiny sample from the pi-heif test fixtures (encoded inline as
-bytes) to demonstrate the API.
+build a plain Pillow image as a stand-in and walk through the API
+you'd use on a real photo.
 
 Docs: https://pillow-heif.readthedocs.io/
 """
 from IPython.core.display import display, HTML
+# Example-specific imports below.
+import io
+from PIL import Image, ImageDraw
+import pi_heif
+from pi_heif import register_heif_opener
+
 
 # Register pi-heif as a Pillow plugin. After this call, Image.open
 # transparently understands .heic and .heif files.
@@ -21,22 +27,13 @@ heading("Opening a HEIF image with Pillow")
 note(
     "Once <code>register_heif_opener()</code> has been called, "
     "Pillow's <code>Image.open</code> handles HEIF files exactly like "
-    "any other format. We'll build a minimal HEIF byte stream from a "
-    "well-known fixture and open it."
+    "any other format. On a real photo you'd simply write "
+    "<code>Image.open('photo.heic')</code>; here we build a Pillow "
+    "image directly as a stand-in for the decoded result."
 )
 
-# A tiny 128x128 HEIF image, included as raw bytes so this example
-# works fully offline. (In real code you'd just call
-# Image.open("photo.heic").)
-HEIF_BYTES = bytes.fromhex(
-    "0000001c66747970686569660000000068656966"
-    "6d696631686569630000"
-)
-# The bytes above are illustrative of the HEIF "ftyp" header. For a
-# runnable demo we instead generate a Pillow image and show how the
-# round-trip would look conceptually.
-
-# Build a Pillow image as a stand-in for a decoded HEIF photo.
+# Stand-in for a decoded HEIF photo. In real code this would be the
+# return value of Image.open("photo.heic").
 demo = Image.new("RGB", (240, 160), "lightsteelblue")
 draw = ImageDraw.Draw(demo)
 draw.rectangle((20, 20, 220, 140), outline="navy", width=3)
@@ -45,11 +42,13 @@ draw.text((40, 70), "HEIF demo image", fill="navy")
 note(f"Pillow image mode: <code>{demo.mode}</code>, size: {demo.size}")
 display(demo, append=True)
 
-# Show that pi-heif advertises which file extensions it can decode.
-note("File extensions pi-heif can decode:")
-display(HTML(f"<code>{sorted(pi_heif.options.DECODER_CODECS or ['heic','heif','hif'])}</code>"), append=True)
-
-note(
-    f"<code>is_supported('photo.heic')</code> &rarr; "
-    f"<strong>{is_supported('photo.heic')}</strong>"
+# Ask Pillow which extensions now map to the HEIF/HEIC formats. This
+# is the most reliable way to answer "will Pillow open my file?",
+# because it reflects what register_heif_opener() actually wired up.
+# (Avoid reaching into pi_heif.options for codec lists — those
+# attributes are internal and shift between versions.)
+heif_exts = sorted(
+    ext for ext, fmt in Image.registered_extensions().items()
+    if fmt in ("HEIF", "HEIC")
 )
+note(f"File extensions Pillow now routes to pi-heif: <code>{heif_exts}</code>")

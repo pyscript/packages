@@ -4,6 +4,12 @@
 # HEIF photos into OpenCV, scikit-image, or any other array-based
 # pipeline.
 # ---------------------------------------------------------------------
+import numpy as np
+import matplotlib.pyplot as plt
+import pi_heif
+from pi_heif import register_heif_opener
+
+register_heif_opener()
 
 heading("From HeifFile to NumPy array")
 note(

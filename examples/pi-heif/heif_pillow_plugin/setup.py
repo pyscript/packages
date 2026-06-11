@@ -39,9 +39,3 @@ def heading(text, level=2):
 def note(text):
     display(HTML(f"<p>{text}</p>"), append=True)
 
-
-# Example-specific imports below.
-import io
-from PIL import Image, ImageDraw
-import pi_heif
-from pi_heif import register_heif_opener, open_heif, is_supported

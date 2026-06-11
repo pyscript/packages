@@ -7,6 +7,12 @@
 # We'll demonstrate the option flags and visualise the difference
 # between an 8-bit and a simulated 16-bit decode.
 # ---------------------------------------------------------------------
+import numpy as np
+import matplotlib.pyplot as plt
+from pi_heif import register_heif_opener
+
+register_heif_opener()
+
 
 heading("HDR decoding options")
 note(

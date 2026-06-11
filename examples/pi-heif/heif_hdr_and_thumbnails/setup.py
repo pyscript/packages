@@ -18,11 +18,3 @@ def heading(text, level=2):
 def note(text):
     display(HTML(f"<p>{text}</p>"), append=True)
 
-
-import numpy as np
-import matplotlib.pyplot as plt
-from PIL import Image
-import pi_heif
-from pi_heif import register_heif_opener, open_heif
-
-register_heif_opener()
