@@ -18,13 +18,3 @@ def heading(text, level=2):
 def note(text):
     display(HTML(f"<p>{text}</p>"), append=True)
 
-
-import numpy as np
-import pandas as pd
-import matplotlib.pyplot as plt
-
-from pythermodb_settings.models import Component, Temperature
-from pyreactlab_core.models.reaction import Reaction
-from pythermocalcdb_nasa import (
-    dH_rxn_STD, dS_rxn_STD, dG_rxn_STD, Keq, Keq_vh_shortcut,
-)

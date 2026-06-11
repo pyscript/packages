@@ -2,6 +2,13 @@
 # The water-gas shift reaction:  CO(g) + H2O(g) -> CO2(g) + H2(g)
 # ---------------------------------------------------------------------
 
+import numpy as np
+import pandas as pd
+import matplotlib.pyplot as plt
+
+from pythermodb_settings.models import Component
+from pyreactlab_core.models.reaction import Reaction
+
 heading("Water-gas shift: building the reaction")
 note(
     "The water-gas shift is a workhorse of industrial hydrogen "
