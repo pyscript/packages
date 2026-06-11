@@ -18,5 +18,3 @@ def heading(text, level=2):
 def note(text):
     display(HTML(f"<p>{text}</p>"), append=True)
 
-
-from propcache.api import cached_property, under_cached_property

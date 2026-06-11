@@ -2,6 +2,9 @@
 # under_cached_property: store cached values in `self._cache`
 # ---------------------------------------------------------------------
 
+from propcache.api import cached_property, under_cached_property
+
+
 heading("When you want a separate cache dict: under_cached_property")
 note(
     "<code>under_cached_property</code> behaves like "

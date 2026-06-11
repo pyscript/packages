@@ -40,7 +40,3 @@ def heading(text, level=2):
 def note(text):
     display(HTML(f"<p>{text}</p>"), append=True)
 
-
-# propcache provides a fast drop-in replacement for
-# functools.cached_property. Both decorators live in propcache.api.
-from propcache.api import cached_property

@@ -10,6 +10,10 @@ implementation aimed at hot code paths.
 See https://propcache.readthedocs.io for full documentation.
 """
 from IPython.core.display import display, HTML
+# propcache provides a fast drop-in replacement for
+# functools.cached_property. Both decorators live in propcache.api.
+from propcache.api import cached_property
+
 
 heading("A weather station with an expensive computation")
 note(
