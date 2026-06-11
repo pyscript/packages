@@ -10,6 +10,9 @@ that might have a side effect.
 See: https://github.com/alexmojaki/pure_eval
 """
 from IPython.core.display import display, HTML
+import ast
+from pure_eval import Evaluator, CannotEval
+
 
 
 # A class with a property that has an observable side effect: it

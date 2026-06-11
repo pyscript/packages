@@ -3,6 +3,9 @@
 # evaluate. This is the bread and butter of tools that annotate source
 # code with live values, such as debuggers and tracebacks.
 # ---------------------------------------------------------------------
+import ast
+from pure_eval import Evaluator, group_expressions
+
 
 heading("Scanning a script for evaluatable expressions")
 note(
