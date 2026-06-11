@@ -12,6 +12,11 @@ what to reach for next. See:
 """
 from IPython.core.display import display, HTML
 
+import numpy as np
+import matplotlib.pyplot as plt
+import pymemsim as pms
+
+
 heading("PyMemSim version")
 note(f"Running PyMemSim <strong>{pms.__version__}</strong> in your browser.")
 

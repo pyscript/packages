@@ -11,6 +11,10 @@
 # a gas-phase, co-current hollow-fiber membrane separating a CO2/N2
 # mixture. The point is to make the configuration vocabulary feel
 # concrete before running a solver.
+import numpy as np
+import matplotlib.pyplot as plt
+import pymemsim as pms
+
 
 heading("Inspecting PyMemSim's configuration classes")
 
