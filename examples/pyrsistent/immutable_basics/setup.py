@@ -39,7 +39,3 @@ def heading(text, level=2):
 def note(text):
     display(HTML(f"<p>{text}</p>"), append=True)
 
-
-# Pyrsistent provides immutable, "persistent" data structures inspired
-# by Clojure. We import the most common building blocks here.
-from pyrsistent import v, pvector, m, pmap, s, pset, freeze, thaw

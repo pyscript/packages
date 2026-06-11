@@ -18,9 +18,3 @@ def heading(text, level=2):
 
 def note(text):
     display(HTML(f"<p>{text}</p>"), append=True)
-
-
-from pyrsistent import (
-    PRecord, field, pvector_field, pmap_field,
-    InvariantException, PTypeError, v, m, freeze, thaw,
-)

@@ -3,6 +3,12 @@
 # Great for modeling domain entities you want to keep honest.
 # ---------------------------------------------------------------------
 
+from pyrsistent import (
+    PRecord, field, pvector_field, pmap_field,
+    InvariantException, PTypeError, v, thaw,
+)
+
+
 heading("1. Declaring a record with typed fields")
 note(
     "A Book has a title, a positive page count, and a list of tags. "

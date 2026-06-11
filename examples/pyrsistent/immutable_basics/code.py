@@ -8,6 +8,10 @@ most of their data, so this is fast and memory-efficient.
 Docs: https://pyrsistent.readthedocs.org/
 """
 from IPython.core.display import display, HTML
+# Pyrsistent provides immutable, "persistent" data structures inspired
+# by Clojure. We import the most common building blocks here.
+from pyrsistent import v, m, pmap, s, freeze, thaw
+
 
 heading("1. PVector: an immutable list")
 note(
