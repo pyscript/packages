@@ -7,6 +7,8 @@ temperature, energy, length, mass, volume, ...). See the project
 docs at https://github.com/sinagilassi/pycuc for the full list.
 """
 from IPython.core.display import display, HTML
+import pycuc
+
 
 heading("Reactor pressure: from megapascals to friendlier units")
 note(

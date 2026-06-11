@@ -1,6 +1,8 @@
 # ---------------------------------------------------------------------
 # Defining your own units with add_custom_unit()
 # ---------------------------------------------------------------------
+import pycuc
+
 
 heading("Teaching PyCUC a new unit")
 note(

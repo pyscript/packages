@@ -1,6 +1,8 @@
 # ---------------------------------------------------------------------
 # Reusable converter objects with create_cuc()
 # ---------------------------------------------------------------------
+import pycuc
+
 
 heading("Carry a value around as a converter object")
 note(
