@@ -18,7 +18,3 @@ def heading(text, level=2):
 def note(text):
     display(HTML(f"<p>{text}</p>"), append=True)
 
-
-import pandas as pd
-from pyreactlab_core.models.reaction import Reaction
-from pyreactlab_core import rxn, rxns_stoichiometry

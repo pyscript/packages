@@ -40,6 +40,3 @@ def heading(text, level=2):
 def note(text):
     display(HTML(f"<p>{text}</p>"), append=True)
 
-
-# Package imports for the first example.
-from pyreactlab_core.models.reaction import Reaction

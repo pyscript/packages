@@ -8,6 +8,9 @@ coefficients, phases, and more.
 Docs: https://pyreactlab-core.readthedocs.io/
 """
 from IPython.core.display import display, HTML
+# Package imports for the first example.
+from pyreactlab_core.models.reaction import Reaction
+
 
 heading("Methanol synthesis from CO2 and hydrogen")
 note(
