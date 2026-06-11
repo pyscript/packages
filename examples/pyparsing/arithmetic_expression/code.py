@@ -6,6 +6,12 @@
 # precedence. You give it an operand and a list of (operator, arity,
 # associativity, action) tuples, ordered from highest to lowest precedence.
 
+import pyparsing as pp
+from pyparsing import (
+    one_of, infix_notation, OpAssoc, pyparsing_common,
+)
+
+
 heading("Arithmetic with operator precedence")
 note(
     "We'll parse expressions like <code>2 + 3 * (4 - 1)</code> and "

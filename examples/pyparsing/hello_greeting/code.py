@@ -7,6 +7,10 @@ is a ParseResults object, which behaves like a list and (when you
 add results names) like a dict.
 """
 from IPython.core.display import display, HTML
+# Package imports for this example.
+import pyparsing as pp
+from pyparsing import Word, alphas
+
 
 heading("1. Parsing a friendly greeting")
 note(

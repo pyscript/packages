@@ -15,9 +15,3 @@ def heading(text, level=2):
 
 def note(text):
     display(HTML(f"<p>{text}</p>"), append=True)
-
-
-import pyparsing as pp
-from pyparsing import (
-    Word, alphas, nums, one_of, infix_notation, OpAssoc, pyparsing_common,
-)

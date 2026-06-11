@@ -1,6 +1,13 @@
 # ---------------------------------------------------------------------
 # A real-world flavor: extracting structured fields from log lines.
 # ---------------------------------------------------------------------
+
+import pyparsing as pp
+from pyparsing import (
+    Word, Suppress, Combine, QuotedString, one_of,
+    nums, alphas, alphanums, Group, OneOrMore, pyparsing_common,
+)
+
 #
 # We'll define a grammar for lines like:
 #
