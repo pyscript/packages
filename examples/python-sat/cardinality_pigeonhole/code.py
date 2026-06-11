@@ -11,6 +11,11 @@
 # pigeon? The pigeonhole principle says no -- and the SAT solver
 # will agree.
 
+from pysat.formula import CNF, IDPool
+from pysat.card import CardEnc, EncType
+from pysat.solvers import Solver
+
+
 def pigeonhole(n_pigeons, n_holes):
     """Build a pigeonhole CNF and return (formula, var_map)."""
     pool = IDPool()

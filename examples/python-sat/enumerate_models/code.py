@@ -7,6 +7,10 @@
 # time, blocking each one internally so the next call returns a
 # genuinely different assignment.
 
+from pysat.formula import CNF
+from pysat.solvers import Solver
+
+
 heading("All ways to pack a 3-item picnic basket")
 note(
     "Variables: 1 = sandwich, 2 = salad, 3 = cake. Constraints: "

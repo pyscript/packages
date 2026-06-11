@@ -39,8 +39,3 @@ def heading(text, level=2):
 
 def note(text):
     display(HTML(f"<p>{text}</p>"), append=True)
-
-
-# python-sat imports for the examples below.
-from pysat.formula import CNF
-from pysat.solvers import Solver

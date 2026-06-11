@@ -12,6 +12,11 @@ clauses that must all be satisfied simultaneously.
 """
 from IPython.core.display import display, HTML
 
+# python-sat imports for the examples below.
+from pysat.formula import CNF
+from pysat.solvers import Solver
+
+
 # Three Boolean variables: 1 = "Alice attends",
 # 2 = "Bob attends", 3 = "Carol attends".
 # We want to pick a guest list satisfying these social constraints:
