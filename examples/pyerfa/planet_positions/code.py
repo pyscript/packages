@@ -6,6 +6,11 @@
 # AU/day) for planets 1..8 (Mercury through Neptune) using an
 # analytical approximation accurate enough for many purposes.
 
+import numpy as np
+import matplotlib.pyplot as plt
+import erfa
+
+
 heading("Tracing the inner planets over one Earth-year")
 note(
     "We sample plan94 every few days for a full year starting "

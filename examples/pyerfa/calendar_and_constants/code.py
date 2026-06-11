@@ -9,6 +9,10 @@ https://pyerfa.readthedocs.io/ for the full catalogue.
 """
 from IPython.core.display import display, HTML
 
+import numpy as np
+import erfa
+
+
 # ERFA exposes a number of useful astronomical constants from erfam.h.
 heading("Some ERFA constants")
 note(

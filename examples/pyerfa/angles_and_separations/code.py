@@ -5,6 +5,9 @@
 # ERFA includes a rich set of angle utilities. Here we'll parse
 # right-ascension and declination strings, then use erfa.seps to
 # compute the angular separation between bright stars.
+import numpy as np
+import erfa
+
 
 heading("Parsing RA/Dec strings into radians")
 note(
