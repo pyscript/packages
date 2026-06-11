@@ -34,9 +34,3 @@ def heading(text, level=2):
 
 def note(text):
     display(HTML(f"<p>{text}</p>"), append=True)
-
-
-# Package imports for the example.
-from datetime import datetime, date
-from dateutil.parser import parse, parserinfo
-from dateutil.relativedelta import relativedelta, MO, FR, SU

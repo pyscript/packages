@@ -1,6 +1,15 @@
 # ---------------------------------------------------------------------
 # Section 3: Recurrence rules - schedules, holidays, and exceptions.
 # ---------------------------------------------------------------------
+# Package imports for the example.
+from datetime import datetime
+from dateutil.parser import parse
+from dateutil.rrule import (
+    rrule, rruleset, rrulestr,
+    YEARLY, MONTHLY, WEEKLY, DAILY,
+    MO, TU, WE, TH, FR, SA, SU,
+)
+
 
 heading("3. rrule: generate schedules from recurrence rules")
 note(

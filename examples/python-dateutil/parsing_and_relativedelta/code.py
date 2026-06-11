@@ -10,6 +10,12 @@ Docs: https://dateutil.readthedocs.io/en/stable/
 """
 from IPython.core.display import display, HTML
 
+# Package imports for the example.
+from datetime import datetime, date
+from dateutil.parser import parse, parserinfo
+from dateutil.relativedelta import relativedelta, MO, FR, SU
+
+
 # ---------------------------------------------------------------------
 # Section 1: Parsing dates from almost any string format.
 # ---------------------------------------------------------------------
