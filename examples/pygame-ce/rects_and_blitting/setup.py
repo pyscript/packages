@@ -20,21 +20,3 @@ def heading(text, level=2):
 
 def note(text):
     display(HTML(f"<p>{text}</p>"), append=True)
-
-
-import pygame
-pygame.init()
-
-
-def show_surface(surface, caption=""):
-    buffer = io.BytesIO()
-    pygame.image.save(surface, buffer, "PNG")
-    encoded = base64.b64encode(buffer.getvalue()).decode("ascii")
-    label = f"<div><em>{caption}</em></div>" if caption else ""
-    display(
-        HTML(
-            f'{label}<img src="data:image/png;base64,{encoded}" '
-            f'style="image-rendering: pixelated; max-width: 100%;">'
-        ),
-        append=True,
-    )

@@ -39,30 +39,3 @@ def heading(text, level=2):
 
 def note(text):
     display(HTML(f"<p>{text}</p>"), append=True)
-
-
-# pygame-ce needs a dummy video driver when running headless inside a
-# web worker. We must set this BEFORE importing pygame.
-import os
-os.environ.setdefault("SDL_VIDEODRIVER", "dummy")
-
-import io
-import base64
-import pygame
-
-
-def show_surface(surface, caption=""):
-    """Render a pygame Surface as an inline PNG in the page."""
-    # pygame.image.save can write to any file-like object. We grab the
-    # PNG bytes, base64-encode them, and embed them in an <img> tag.
-    buffer = io.BytesIO()
-    pygame.image.save(surface, buffer, "PNG")
-    encoded = base64.b64encode(buffer.getvalue()).decode("ascii")
-    label = f"<div><em>{caption}</em></div>" if caption else ""
-    display(
-        HTML(
-            f'{label}<img src="data:image/png;base64,{encoded}" '
-            f'style="image-rendering: pixelated; max-width: 100%;">'
-        ),
-        append=True,
-    )
