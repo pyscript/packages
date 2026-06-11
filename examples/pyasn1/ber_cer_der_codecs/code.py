@@ -1,6 +1,20 @@
 # pyasn1 decouples ASN.1 types from serialization. The same value can
 # be encoded with several codecs: BER (basic), CER (canonical, useful
 # for streaming), and DER (canonical, used in X.509, PKCS, etc.).
+from pyasn1.type.univ import (
+    Integer, OctetString, ObjectIdentifier, Sequence, SequenceOf,
+)
+from pyasn1.type.char import UTF8String
+from pyasn1.type.namedtype import NamedTypes, NamedType
+from pyasn1.codec.ber.encoder import encode as ber_encode
+from pyasn1.codec.cer.encoder import encode as cer_encode
+from pyasn1.codec.der.encoder import encode as der_encode
+from pyasn1.codec.der.decoder import decode as der_decode
+
+
+def hexdump(data):
+    return " ".join(f"{b:02X}" for b in data)
+
 
 # A SEQUENCE describing a tagged measurement: a sensor OID, a label,
 # and an integer reading.

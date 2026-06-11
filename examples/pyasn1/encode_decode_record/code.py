@@ -13,6 +13,20 @@ The ASN.1 schema we model here is the classic introductory example:
 Docs: https://pyasn1.readthedocs.io/
 """
 from IPython.core.display import display, HTML
+# pyasn1 imports used by this example.
+from pyasn1.type.univ import Integer, Sequence
+from pyasn1.type.namedtype import (
+    NamedTypes, NamedType, OptionalNamedType, DefaultedNamedType,
+)
+from pyasn1.type.tag import Tag, tagClassContext, tagFormatSimple
+from pyasn1.codec.der.encoder import encode as der_encode
+from pyasn1.codec.der.decoder import decode as der_decode
+
+
+def hexdump(data):
+    """Return a space-separated hex string of the bytes in `data`."""
+    return " ".join(f"{b:02X}" for b in data)
+
 
 
 # Define the Record schema as a Python class. Each named type maps to a
