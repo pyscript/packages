@@ -7,6 +7,10 @@ The PyPI distribution is named `pyshp`, but the import name is
 `shapefile`. Docs and source: https://github.com/GeospatialPython/pyshp
 """
 from IPython.core.display import display, HTML
+# pyshp is imported as the `shapefile` module.
+import shapefile
+import io
+
 
 heading("A handful of lighthouses")
 note(

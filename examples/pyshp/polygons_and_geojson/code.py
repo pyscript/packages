@@ -2,24 +2,33 @@
 # Polygon shapefiles, holes, and GeoJSON via __geo_interface__.
 # ---------------------------------------------------------------------
 
+import shapefile
+import io
+import matplotlib.pyplot as plt
+from matplotlib.path import Path
+from matplotlib.patches import PathPatch
+
 heading("Tiny parks dataset")
 note(
     "Polygons in shapefiles must be closed (the last point repeats "
-    "the first), and holes are signalled by reversing the winding "
-    "order: outer rings clockwise, holes counterclockwise. PyShp "
-    "auto-closes rings if you forget the last point."
+    "the first). Crucially, the shapefile format has no flag to "
+    "distinguish an outer ring from a hole — the only signal is "
+    "winding order: outer rings clockwise, holes counterclockwise. "
+    "Get this wrong and tools that consume the file (including "
+    "PyShp's own GeoJSON conversion) will misread your geometry."
 )
 
 shp_buf, shx_buf, dbf_buf = io.BytesIO(), io.BytesIO(), io.BytesIO()
 
 # A square park with a square pond cut out, plus a triangular plaza.
-park_outer = [(0, 0), (0, 10), (10, 10), (10, 0), (0, 0)]
-pond_hole  = [(3, 3), (7, 3), (7, 7), (3, 7), (3, 3)]   # counterclockwise
-plaza      = [(15, 2), (20, 2), (17, 8), (15, 2)]
+# Outer rings are clockwise; holes are counterclockwise.
+park_outer = [(0, 0), (10, 0), (10, 10), (0, 10), (0, 0)]  # clockwise
+pond_hole  = [(3, 3), (3, 7), (7, 7), (7, 3), (3, 3)]      # counterclockwise
+plaza      = [(15, 2), (17, 8), (20, 2), (15, 2)]          # clockwise
 
 with shapefile.Writer(shp=shp_buf, shx=shx_buf, dbf=dbf_buf) as writer:
-    writer.field("name",       "C", size=30)
-    writer.field("area_sqm",   "N", decimal=1)
+    writer.field("name",     "C", size=30)
+    writer.field("area_sqm", "N", decimal=1)
 
     # A single polygon feature with an outer ring and a hole.
     writer.poly([park_outer, pond_hole])
@@ -60,11 +69,25 @@ display(HTML(
     "</pre>"
 ), append=True)
 
+heading("Plotting polygons with real holes", level=3)
+note(
+    "GeoJSON's nested-ring structure encodes holes semantically, but "
+    "matplotlib needs you to translate that into a compound "
+    "<code>Path</code>: outer ring plus inner rings as sub-paths in a "
+    "single <code>PathPatch</code>. This renders holes as genuinely "
+    "transparent — unlike the common shortcut of overpainting with a "
+    "white fill, which breaks the moment you have a non-white "
+    "background or layered features."
+)
+
 # Plot the polygons using their GeoJSON coordinates.
 fig, ax = plt.subplots(figsize=(7, 4))
-for feature in geojson["features"]:
+colors = plt.rcParams["axes.prop_cycle"].by_key()["color"]
+
+for i, feature in enumerate(geojson["features"]):
     geom = feature["geometry"]
     name = feature["properties"]["name"]
+    color = colors[i % len(colors)]
     # GeoJSON nests rings as [[outer, hole, ...]] for Polygons,
     # and one level deeper for MultiPolygons.
     polygons = (
@@ -73,14 +96,22 @@ for feature in geojson["features"]:
         else [geom["coordinates"]]
     )
     for rings in polygons:
-        outer = rings[0]
-        xs, ys = zip(*outer)
-        ax.fill(xs, ys, alpha=0.4, label=name)
-        for hole in rings[1:]:
-            hx, hy = zip(*hole)
-            ax.fill(hx, hy, color="white")
+        # Build a compound path: outer ring + holes as sub-paths.
+        # Matplotlib renders the holes as genuinely transparent when
+        # the path alternates winding between outer and inner rings.
+        vertices = []
+        codes = []
+        for ring in rings:
+            vertices.extend(ring)
+            codes.append(Path.MOVETO)
+            codes.extend([Path.LINETO] * (len(ring) - 2))
+            codes.append(Path.CLOSEPOLY)
+        path = Path(vertices, codes)
+        patch = PathPatch(path, facecolor=color, alpha=0.4, label=name)
+        ax.add_patch(patch)
 
 ax.set_aspect("equal")
+ax.autoscale_view()
 ax.set_title("Parks polygons (with a pond-shaped hole)")
 ax.legend(loc="upper right")
 fig.tight_layout()

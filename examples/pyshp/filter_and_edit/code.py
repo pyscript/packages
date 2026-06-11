@@ -3,8 +3,12 @@
 # through it filtering by attribute and bounding box, writing only the
 # matching features (and only the fields we care about) to a new file.
 # ---------------------------------------------------------------------
+import shapefile
+import io
+import matplotlib.pyplot as plt
 
-heading("Source data: weather stations across a region")
+
+heading("Source data: river segments across two basins")
 note(
     "We'll synthesize a polyline shapefile of fictional river "
     "segments tagged by basin and length, then produce a derived "
@@ -15,19 +19,19 @@ note(
 src_shp, src_shx, src_dbf = io.BytesIO(), io.BytesIO(), io.BytesIO()
 
 rivers = [
-    ("Otter Brook",  "North", 4.2,  [(0, 0), (1, 2), (2, 5)]),
-    ("Heron Creek",  "North", 1.1,  [(2, 5), (3, 5)]),
-    ("Pine River",   "North", 8.7,  [(3, 5), (5, 6), (8, 8), (10, 9)]),
-    ("Willow Run",   "South", 2.5,  [(0, -1), (2, -2), (4, -2)]),
-    ("Birch Stream", "South", 6.0,  [(4, -2), (7, -3), (10, -4)]),
-    ("Cedar Wash",   "South", 0.9,  [(7, -3), (8, -3)]),
+    ("Otter Brook",  "North", 4.2, [(0, 0), (1, 2), (2, 5)]),
+    ("Heron Creek",  "North", 1.1, [(2, 5), (3, 5)]),
+    ("Pine River",   "North", 8.7, [(3, 5), (5, 6), (8, 8), (10, 9)]),
+    ("Willow Run",   "South", 2.5, [(0, -1), (2, -2), (4, -2)]),
+    ("Birch Stream", "South", 6.0, [(4, -2), (7, -3), (10, -4)]),
+    ("Cedar Wash",   "South", 0.9, [(7, -3), (8, -3)]),
 ]
 
 with shapefile.Writer(shp=src_shp, shx=src_shx, dbf=src_dbf) as writer:
-    writer.field("name",     "C", size=40)
-    writer.field("basin",    "C", size=10)
+    writer.field("name",      "C", size=40)
+    writer.field("basin",     "C", size=10)
     writer.field("length_km", "N", decimal=1)
-    writer.field("notes",    "C", size=80)   # a field we'll later drop
+    writer.field("notes",     "C", size=80)   # a field we'll later drop
 
     for name, basin, length, coords in rivers:
         writer.line([coords])
@@ -53,9 +57,12 @@ keep_fields = ["name", "basin", "length_km"]
 reader = shapefile.Reader(shp=src_shp, shx=src_shx, dbf=src_dbf)
 writer = shapefile.Writer(shp=dst_shp, shx=dst_shx, dbf=dst_dbf)
 
-# Copy only the fields we want to keep (skip the leading DeletionFlag).
+# Copy only the fields we want to keep. PyShp returns each field as a
+# plain list, [name, type, size, decimal], not an object with named
+# attributes -- so we index by position. The first entry is always a
+# DeletionFlag, which we skip.
 for field in reader.fields[1:]:
-    if field.name in keep_fields:
+    if field[0] in keep_fields:
         writer.field(*field)
 
 kept = []
