@@ -10,6 +10,9 @@ Docs: https://github.com/ahupp/python-magic
 """
 from IPython.core.display import display, HTML
 
+import magic
+
+
 # A small "file cabinet" of byte signatures for common file types.
 # Each entry is a realistic header we'd find at the start of a file.
 file_samples = {

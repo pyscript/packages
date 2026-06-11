@@ -41,6 +41,3 @@ def heading(text, level=2):
 def note(text):
     """Emit a short paragraph of explanatory prose."""
     display(HTML(f"<p>{text}</p>"), append=True)
-
-
-import magic

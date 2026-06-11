@@ -7,6 +7,9 @@
 # of what the user named it. This protects against mislabeled or
 # disguised files (think: a script renamed to look like an image).
 
+import magic
+
+
 heading("A MIME-based upload router")
 note(
     "Each incoming upload is a tuple of (claimed filename, bytes). "
