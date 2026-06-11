@@ -38,9 +38,3 @@ def heading(text, level=2):
 
 def note(text):
     display(HTML(f"<p>{text}</p>"), append=True)
-
-
-# Package imports for this example.
-import nacl.utils
-from nacl.secret import SecretBox
-from nacl.encoding import HexEncoder

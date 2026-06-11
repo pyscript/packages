@@ -1,6 +1,9 @@
 # ---------------------------------------------------------------------
 # Alice and Bob exchange messages using Curve25519 key pairs.
 # ---------------------------------------------------------------------
+from nacl.public import PrivateKey, Box, SealedBox
+from nacl.encoding import HexEncoder
+
 
 heading("Alice and Bob exchange keys")
 note(

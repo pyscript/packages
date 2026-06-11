@@ -2,6 +2,13 @@
 # Ed25519 digital signatures: prove who wrote a message.
 # ---------------------------------------------------------------------
 
+import nacl.hash
+import nacl.pwhash
+from nacl.signing import SigningKey
+from nacl.encoding import HexEncoder
+from nacl.exceptions import BadSignatureError, InvalidkeyError
+
+
 heading("Signing a release announcement")
 note(
     "A SigningKey produces signatures; the matching VerifyKey "

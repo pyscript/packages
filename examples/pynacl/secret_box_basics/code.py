@@ -10,6 +10,11 @@ Docs: https://pynacl.readthedocs.io/en/latest/secret/
 """
 from IPython.core.display import display, HTML
 
+# Package imports for this example.
+import nacl.utils
+from nacl.secret import SecretBox
+
+
 heading("A diary entry, locked with a shared key")
 note(
     "We generate a random 32-byte key, encrypt a short message, "
