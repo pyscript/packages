@@ -418,7 +418,7 @@
         {
             "package_name": "annotated-doc",
             "downloads": 377789569,
-            "status": "amber",
+            "status": "green",
             "summary": "Document parameters, class attributes, return types, and variables inline, with Annotated."
         },
         {
