@@ -30,6 +30,7 @@ core_display.display = display
 core_display.HTML = HTML
 ipython.core = core
 core.display = core_display
+ipython.version_info = (9, 0, 2, '')
 # Libraries like matplotlib check for IPython by doing
 # `sys.modules.get("IPython").get_ipython()` and expect either a shell
 # object or None. We don't have a shell object, but we can at least return
