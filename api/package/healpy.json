@@ -1,7 +1,11 @@
 {
     "status": "green",
-    "notes": "Great news! The package `healpy` is [officially supported](https://pyodide.org/en/stable/usage/packages-in-pyodide.html) in the latest Pyodide release used by PyScript.\n\nTo use it in PyScript simply add it to the `packages` section of your TOML configuration like this:\n\n```\npackages = [\"healpy\" ]\n```\n\nOr if you're using a JSON configuration, like this:\n\n```\n{\n    packages: [\"healpy\"]\n }\n```\n\nRead more about using packages in PyScript [in our documentation](https://docs.pyscript.net/latest/user-guide/configuration/#packages).\n\nSpecifically, the following versions of the package are available for the following Pyodide releases:\n\nPyodide version: package name (version) (PyScript Version)\n\n* 0.29.3: healpy (1.19.0) ([PyScript 2026.3.1](https://pyscript.net/releases/2026.3.1/))\n* 0.29.2: healpy (1.19.0)",
+    "notes": "\u26a0\ufe0f The package `healpy` has been supported in previous versions of Pyodide, but is not supported in the latest Pyodide release (used by default in PyScript). Supported versions of Pyodide and PyScript are listed below, and details of how to pin PyScript to use a specific version of Pyodide can be [found here](https://docs.pyscript.net/2025.11.1/user-guide/configuration/#interpreter).\n\nTo use it in PyScript simply add it to the `packages` section of your TOML configuration like this:\n\n```\npackages = [\"healpy\" ]\n```\n\nOr if you're using a JSON configuration, like this:\n\n```\n{\n    packages: [\"healpy\"]\n }\n```\n\nRead more about using packages in PyScript [in our documentation](https://docs.pyscript.net/latest/user-guide/configuration/#packages).\n\nSpecifically, the following versions of the package are available for the following Pyodide releases:\n\nPyodide version: package name (version) (PyScript Version)\n\n* 0.29.4: healpy (1.19.0)\n* 0.29.3: healpy (1.19.0) ([PyScript 2026.3.1](https://pyscript.net/releases/2026.3.1/))\n* 0.29.2: healpy (1.19.0)",
     "pyodide_versions": {
+        "0.29.4": {
+            "package_version": "1.19.0",
+            "pyscript_version": "unknown"
+        },
         "0.29.3": {
             "package_version": "1.19.0",
             "pyscript_version": "2026.3.1"
@@ -12,7 +16,7 @@
         }
     },
     "updated_by": "automated script",
-    "updated_at": "2025-11-10T13:32:51.838562+00:00",
+    "updated_at": "2026-06-23T10:56:29.012353+00:00",
     "summary": "Healpix tools package for Python",
     "examples": []
 }
