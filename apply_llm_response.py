@@ -605,20 +605,6 @@ def process_package_with_branching(
     )
 
 
-
-    """Return prompt-directory names, sorted, that have a response."""
-    if not prompts_dir.is_dir():
-        return []
-    out = []
-    for entry in prompts_dir.iterdir():
-        if not entry.is_dir() or entry.name.startswith("_"):
-            continue
-        if (entry / RESPONSE_FILENAME).exists():
-            out.append(entry.name)
-    out.sort(key=str.lower)
-    return out
-
-
 def write_manifest(
     examples_dir: Path, results: list[PackageResult],
 ) -> None:
