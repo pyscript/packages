@@ -1,0 +1,18 @@
+{
+    "status": "green",
+    "notes": "Great news! The package `pyroaring` is [officially supported](https://pyodide.org/en/stable/usage/packages-in-pyodide.html) in the latest Pyodide release used by PyScript.\n\nTo use it in PyScript simply add it to the `packages` section of your TOML configuration like this:\n\n```\npackages = [\"pyroaring\" ]\n```\n\nOr if you're using a JSON configuration, like this:\n\n```\n{\n    packages: [\"pyroaring\"]\n }\n```\n\nRead more about using packages in PyScript [in our documentation](https://docs.pyscript.net/latest/user-guide/configuration/#packages).\n\nSpecifically, the following versions of the package are available for the following Pyodide releases:\n\nPyodide version: package name (version) (PyScript Version)\n\n* 314.0.0: pyroaring (1.0.4)\n* 0.29.4: pyroaring (1.0.3)",
+    "pyodide_versions": {
+        "314.0.0": {
+            "package_version": "1.0.4",
+            "pyscript_version": "unknown"
+        },
+        "0.29.4": {
+            "package_version": "1.0.3",
+            "pyscript_version": "unknown"
+        }
+    },
+    "updated_by": "automated script",
+    "updated_at": "2026-06-23T10:56:16.193239+00:00",
+    "summary": "Library for handling efficiently sorted integer sets.",
+    "examples": []
+}
