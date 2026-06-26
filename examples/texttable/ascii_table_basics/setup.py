@@ -23,6 +23,7 @@ core_display.display = display
 core_display.HTML = HTML
 ipython.core = core
 core.display = core_display
+ipython.version_info = (9, 0, 2, '')
 ipython.get_ipython = lambda: None
 ipython.display = core_display
 sys.modules["IPython"] = ipython
