@@ -61,7 +61,7 @@ EXAMPLES_PATH = "/examples.json"
 
 # The PyScript release whose editor and runtime we load. Pinned so a
 # future PyScript change can't silently alter the test harness.
-PYSCRIPT_VERSION = "2026.3.1"
+PYSCRIPT_VERSION = "2026.6.1"
 
 DEFAULT_PORT = 8000
 
