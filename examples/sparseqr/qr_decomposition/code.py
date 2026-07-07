@@ -10,6 +10,13 @@ Project: https://github.com/yig/PySPQR
 """
 from IPython.core.display import display, HTML
 
+import numpy as np
+import scipy.sparse
+import sparseqr
+
+rng = np.random.default_rng(0)
+
+
 heading("A sparse matrix and its QR factorisation")
 note(
     "We build a 200x200 sparse matrix with about 2% non-zero entries "
