@@ -12,6 +12,9 @@ Docs: https://stuvel.eu/python-rsa-doc/
 """
 from IPython.core.display import display, HTML
 
+import rsa
+
+
 heading("1. Generate a fresh RSA key pair")
 note(
     "We use a small 512-bit key here so it generates quickly in the "
