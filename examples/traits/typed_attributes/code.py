@@ -7,6 +7,12 @@ Docs: https://docs.enthought.com/traits/
 """
 from IPython.core.display import display, HTML
 
+# Package imports for this example.
+from traits.api import (
+    HasTraits, Str, Int, Float, Range, Enum, List, Bool,
+)
+
+
 
 # Define a class whose attributes are *traits*: each one declares a
 # type, a default, and (optionally) constraints. Validation happens
