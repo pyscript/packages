@@ -35,8 +35,3 @@ def heading(text, level=2):
 
 def note(text):
     display(HTML(f"<p>{text}</p>"), append=True)
-
-
-import asyncio
-import sniffio
-from sniffio import current_async_library, AsyncLibraryNotFoundError

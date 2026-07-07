@@ -9,6 +9,11 @@ Docs: https://sniffio.readthedocs.io
 """
 from IPython.core.display import display, HTML
 
+import asyncio
+import sniffio
+from sniffio import current_async_library, AsyncLibraryNotFoundError
+
+
 heading("1. Sniffing from inside a running coroutine")
 note(
     "Inside an async function we can ask sniffio which library is "
