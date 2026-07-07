@@ -10,6 +10,14 @@ See https://hitchdev.com/strictyaml for more.
 """
 from IPython.core.display import display, HTML
 
+import strictyaml
+from strictyaml import (
+    load, as_document, Map, MapPattern, Seq, FixedSeq, Optional,
+    Str, Int, Float, Bool, Decimal, Datetime, Enum, Regex,
+    CommaSeparated, EmptyNone, YAMLError,
+)
+
+
 # A small bit of YAML describing a fictional character.
 character_yaml = """
 # All about the character

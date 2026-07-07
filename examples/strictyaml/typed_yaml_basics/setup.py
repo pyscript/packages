@@ -39,11 +39,3 @@ def heading(text, level=2):
 
 def note(text):
     display(HTML(f"<p>{text}</p>"), append=True)
-
-
-import strictyaml
-from strictyaml import (
-    load, as_document, Map, MapPattern, Seq, FixedSeq, Optional,
-    Str, Int, Float, Bool, Decimal, Datetime, Enum, Regex,
-    CommaSeparated, EmptyNone, YAMLError,
-)
