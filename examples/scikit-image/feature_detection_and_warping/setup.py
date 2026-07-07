@@ -15,9 +15,3 @@ def heading(text, level=2):
 
 def note(text):
     display(HTML(f"<p>{text}</p>"), append=True)
-
-
-import numpy as np
-import matplotlib.pyplot as plt
-import skimage
-from skimage import data, feature, transform, color, exposure

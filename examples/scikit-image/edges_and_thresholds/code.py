@@ -8,6 +8,13 @@ https://scikit-image.org/docs/stable/api/skimage.data.html
 """
 from IPython.core.display import display, HTML
 
+# Package imports for this example.
+import numpy as np
+import matplotlib.pyplot as plt
+import skimage
+from skimage import data, filters, color
+
+
 heading("Meet scikit-image")
 note(
     f"Using scikit-image version <strong>{skimage.__version__}</strong>. "

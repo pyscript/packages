@@ -2,6 +2,12 @@
 # Segmentation: counting and measuring coins in a sample image.
 # ---------------------------------------------------------------------
 
+import numpy as np
+import matplotlib.pyplot as plt
+import skimage
+from skimage import data, filters, measure, morphology, segmentation, color
+
+
 heading("Counting coins with segmentation")
 note(
     "The <code>data.coins()</code> sample is a grayscale photo of "

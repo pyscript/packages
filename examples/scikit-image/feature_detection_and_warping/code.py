@@ -2,6 +2,12 @@
 # Corner detection and geometric transforms.
 # ---------------------------------------------------------------------
 
+import numpy as np
+import matplotlib.pyplot as plt
+import skimage
+from skimage import data, feature, transform, color, exposure
+
+
 heading("Corners and geometric transforms")
 note(
     "We'll find corner-like features with the Harris detector, then "
