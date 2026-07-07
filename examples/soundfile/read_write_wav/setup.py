@@ -35,9 +35,3 @@ def heading(text, level=2):
 
 def note(text):
     display(HTML(f"<p>{text}</p>"), append=True)
-
-
-import io
-import numpy as np
-import soundfile as sf
-import matplotlib.pyplot as plt

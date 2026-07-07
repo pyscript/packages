@@ -10,6 +10,12 @@ Docs: https://python-soundfile.readthedocs.io/
 """
 from IPython.core.display import display, HTML
 
+import io
+import numpy as np
+import soundfile as sf
+import matplotlib.pyplot as plt
+
+
 heading("A short A4 tone (440 Hz)")
 note(
     "We'll generate one second of a 440 Hz sine wave at 22,050 Hz "
