@@ -12,6 +12,12 @@ it into a 4x4 BGRA image, and look at the resulting pixels.
 Docs: https://github.com/K0lb3/texture2ddecoder
 """
 from IPython.core.display import display, HTML
+# Package imports for this example.
+import texture2ddecoder
+from PIL import Image
+import io
+import base64
+
 
 # A BC1 (a.k.a. DXT1) block is exactly 8 bytes and encodes a 4x4 tile:
 #   - 2 bytes: color0 (RGB565)

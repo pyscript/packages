@@ -41,9 +41,3 @@ def heading(text, level=2):
 def note(text):
     display(HTML(f"<p>{text}</p>"), append=True)
 
-
-# Package imports for this example.
-import texture2ddecoder
-from PIL import Image
-import io
-import base64
