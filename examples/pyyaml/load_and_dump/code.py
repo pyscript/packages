@@ -10,6 +10,9 @@ Docs: https://pyyaml.org/wiki/PyYAMLDocumentation
 """
 from IPython.core.display import display, HTML
 
+import yaml
+
+
 # A config file as you might find one in a project's repo.
 config_text = """
 service: weather-api
