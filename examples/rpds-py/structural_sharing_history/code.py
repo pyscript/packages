@@ -1,6 +1,8 @@
 # ---------------------------------------------------------------------
 # Undo history with persistent maps: every edit becomes a snapshot.
 # ---------------------------------------------------------------------
+from rpds import HashTrieMap, HashTrieSet, List
+
 
 heading("Document edits as a timeline of HashTrieMaps")
 note(

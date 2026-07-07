@@ -11,6 +11,9 @@ See: https://rpds.readthedocs.io/
 """
 from IPython.core.display import display, HTML
 
+from rpds import HashTrieMap, HashTrieSet, List
+
+
 heading("HashTrieMap: an immutable dictionary")
 note(
     "We track the inventory of a small bookshop. Inserting or removing "
