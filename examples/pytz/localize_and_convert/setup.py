@@ -36,8 +36,3 @@ def heading(text, level=2):
 
 def note(text):
     display(HTML(f"<p>{text}</p>"), append=True)
-
-
-# Example-specific imports.
-import pytz
-from datetime import datetime, timedelta

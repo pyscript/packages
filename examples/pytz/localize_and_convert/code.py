@@ -10,6 +10,11 @@ Documentation: https://pythonhosted.org/pytz/
 """
 from IPython.core.display import display, HTML
 
+# Example-specific imports.
+import pytz
+from datetime import datetime, timedelta
+
+
 heading("Scheduling a launch across three time zones")
 note(
     "A rocket launch is scheduled for 06:00 on 27 October 2002, "
