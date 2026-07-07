@@ -11,6 +11,12 @@ rules.
 """
 from IPython.core.display import display, HTML
 
+# Package imports for this example.
+import tzdata
+from datetime import datetime
+from zoneinfo import ZoneInfo
+
+
 heading("What version of the IANA database do we have?")
 note(
     f"The tzdata package bundles a snapshot of the IANA time zone "

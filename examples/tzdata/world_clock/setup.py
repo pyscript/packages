@@ -37,8 +37,3 @@ def heading(text, level=2):
 def note(text):
     display(HTML(f"<p>{text}</p>"), append=True)
 
-
-# Package imports for this example.
-import tzdata
-from datetime import datetime
-from zoneinfo import ZoneInfo
