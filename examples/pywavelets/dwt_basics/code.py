@@ -10,6 +10,12 @@ the signal at different scales.
 Docs: https://pywavelets.readthedocs.io/
 """
 from IPython.core.display import display, HTML
+import numpy as np
+import matplotlib.pyplot as plt
+import pywt
+
+rng = np.random.default_rng(7)
+
 
 heading("Built-in wavelet families")
 note(
