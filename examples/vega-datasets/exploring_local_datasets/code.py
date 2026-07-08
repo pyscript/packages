@@ -9,6 +9,11 @@ Docs: https://github.com/altair-viz/vega_datasets
 """
 from IPython.core.display import display, HTML
 
+# Package imports for this example.
+import pandas as pd
+from vega_datasets import data, local_data
+
+
 heading("The classic iris dataset")
 note(
     "Calling an attribute on the <code>data</code> object loads that "

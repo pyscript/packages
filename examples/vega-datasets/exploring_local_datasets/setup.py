@@ -39,8 +39,3 @@ def heading(text, level=2):
 
 def note(text):
     display(HTML(f"<p>{text}</p>"), append=True)
-
-
-# Package imports for this example.
-import pandas as pd
-from vega_datasets import data, local_data
