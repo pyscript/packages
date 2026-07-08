@@ -8,6 +8,13 @@
 #
 # Each takes the same input and produces a buffer you can decompress.
 
+import numpy as np
+import matplotlib.pyplot as plt
+import zfpy
+
+rng = np.random.default_rng(0)
+
+
 heading("One signal, three modes")
 note(
     "A noisy 2D image. We sweep each mode across a few settings and "

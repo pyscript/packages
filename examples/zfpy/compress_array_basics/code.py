@@ -12,6 +12,12 @@ full API.
 """
 from IPython.core.display import display, HTML
 
+import numpy as np
+import zfpy
+
+rng = np.random.default_rng(0)
+
+
 heading("A smooth 3D field is highly compressible")
 note(
     "We build a 64x64x64 grid of a smooth analytic function. "

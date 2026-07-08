@@ -7,6 +7,13 @@
 # sometimes see this block structure in the reconstruction. Let's
 # make that visible on a synthetic "scientific" image.
 
+import numpy as np
+import matplotlib.pyplot as plt
+import zfpy
+
+rng = np.random.default_rng(0)
+
+
 heading("Side-by-side: original vs. reconstructions")
 note(
     "We compress the same field at three fixed rates and compare each "
