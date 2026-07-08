@@ -9,6 +9,8 @@ you the real on-screen width.
 Docs: https://wcwidth.readthedocs.io/
 """
 from IPython.core.display import display, HTML
+import wcwidth
+
 
 heading("len() vs. wcswidth()")
 note(
