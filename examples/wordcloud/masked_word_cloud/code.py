@@ -2,6 +2,11 @@
 # Confine the layout to a shape using a mask array.
 # ---------------------------------------------------------------------
 
+
+import numpy as np
+import matplotlib.pyplot as plt
+from wordcloud import WordCloud, STOPWORDS
+
 heading("A heart-shaped word cloud")
 note(
     "A 'mask' is a NumPy array the same size as the output. Pixels "

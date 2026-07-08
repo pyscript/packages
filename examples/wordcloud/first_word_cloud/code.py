@@ -6,6 +6,11 @@ Docs: https://amueller.github.io/word_cloud/
 """
 from IPython.core.display import display, HTML
 
+# Package imports for this example.
+import matplotlib.pyplot as plt
+from wordcloud import WordCloud, STOPWORDS
+
+
 # A short, made-up review of an imaginary coffee shop. The repetition of
 # certain words ("coffee", "pastries", "cozy") will make them stand out
 # in the cloud.

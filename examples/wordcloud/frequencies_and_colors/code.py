@@ -2,6 +2,10 @@
 # Build a cloud from a frequency dict and theme it with a custom palette.
 # ---------------------------------------------------------------------
 
+import matplotlib.pyplot as plt
+from wordcloud import WordCloud, STOPWORDS
+
+
 heading("Word cloud from raw frequencies")
 note(
     "Sometimes you already have counts (think: survey tags, log "
