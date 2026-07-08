@@ -2,6 +2,10 @@
 # Filtering the catalog and handling providers that need API tokens.
 # ---------------------------------------------------------------------
 
+import xyzservices
+import xyzservices.providers as xyz
+
+
 heading("Which providers are free to use right now?")
 note(
     "Some providers (Mapbox, Thunderforest, Stadia, ...) require an "

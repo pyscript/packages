@@ -15,13 +15,3 @@ def heading(text, level=2):
 
 def note(text):
     display(HTML(f"<p>{text}</p>"), append=True)
-
-
-import io
-import numpy as np
-import matplotlib.pyplot as plt
-from PIL import Image
-import requests
-
-import xyzservices
-import xyzservices.providers as xyz

@@ -9,6 +9,10 @@ Docs: https://xyzservices.readthedocs.io/
 """
 from IPython.core.display import display, HTML
 
+import xyzservices
+import xyzservices.providers as xyz
+
+
 heading("Browsing the provider catalog")
 note(
     "The <code>xyzservices.providers</code> module is a "

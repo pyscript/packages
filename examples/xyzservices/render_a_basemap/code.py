@@ -2,6 +2,16 @@
 # Use xyzservices URLs to actually fetch and assemble a small basemap.
 # ---------------------------------------------------------------------
 
+import io
+import numpy as np
+import matplotlib.pyplot as plt
+from PIL import Image
+import requests
+
+import xyzservices
+import xyzservices.providers as xyz
+
+
 heading("Stitching a basemap from XYZ tiles")
 note(
     "We'll pick a token-free provider, ask xyzservices for tile "
