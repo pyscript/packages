@@ -10,6 +10,13 @@ Docs: https://docs.xarray.dev
 """
 from IPython.core.display import display, HTML
 
+import numpy as np
+import xarray as xr
+import matplotlib.pyplot as plt
+
+rng = np.random.default_rng(7)
+
+
 heading("A labeled 2D array: sea-surface temperature")
 note(
     "Imagine a small patch of ocean sampled across a grid of "
