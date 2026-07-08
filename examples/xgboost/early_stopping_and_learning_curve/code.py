@@ -2,6 +2,16 @@
 # Watch validation loss during training and let XGBoost stop early.
 # ---------------------------------------------------------------------
 
+import numpy as np
+import pandas as pd
+import matplotlib.pyplot as plt
+import xgboost as xgb
+from sklearn.datasets import make_classification
+from sklearn.model_selection import train_test_split
+
+rng = np.random.default_rng(0)
+
+
 heading("Early stopping with an evaluation set")
 note(
     "Boosting too long can overfit. By passing an eval_set and "

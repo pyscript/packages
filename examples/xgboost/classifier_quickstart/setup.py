@@ -41,13 +41,3 @@ def heading(text, level=2):
 def note(text):
     display(HTML(f"<p>{text}</p>"), append=True)
 
-
-# Example-specific imports.
-import numpy as np
-import pandas as pd
-import xgboost as xgb
-from sklearn.datasets import make_classification
-from sklearn.model_selection import train_test_split
-from sklearn.metrics import accuracy_score, classification_report
-
-rng = np.random.default_rng(0)

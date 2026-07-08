@@ -17,12 +17,3 @@ def heading(text, level=2):
 
 def note(text):
     display(HTML(f"<p>{text}</p>"), append=True)
-
-
-import numpy as np
-import pandas as pd
-import matplotlib.pyplot as plt
-import xgboost as xgb
-from sklearn.model_selection import train_test_split
-
-rng = np.random.default_rng(7)

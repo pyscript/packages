@@ -7,6 +7,17 @@ for tabular machine learning. Docs: https://xgboost.readthedocs.io
 """
 from IPython.core.display import display, HTML
 
+# Example-specific imports.
+import numpy as np
+import pandas as pd
+import xgboost as xgb
+from sklearn.datasets import make_classification
+from sklearn.model_selection import train_test_split
+from sklearn.metrics import accuracy_score, classification_report
+
+rng = np.random.default_rng(0)
+
+
 # Build a synthetic two-class problem: imagine predicting whether a
 # loan applicant will repay, based on 8 anonymous features.
 X, y = make_classification(
