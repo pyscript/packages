@@ -12,6 +12,9 @@ Docs: https://pythonhosted.org/webencodings/
 """
 from IPython.core.display import display, HTML
 
+import webencodings
+
+
 heading("Encoding labels and what they really mean")
 note(
     "On the web, lots of encoding labels are aliases for something "
