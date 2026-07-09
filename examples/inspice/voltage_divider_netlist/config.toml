@@ -1,0 +1,1 @@
+packages = ["inspice", "matplotlib", "numpy"]
