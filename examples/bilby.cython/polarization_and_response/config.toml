@@ -1,0 +1,1 @@
+packages = ["bilby.cython", "numpy"]
