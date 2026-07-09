@@ -1,0 +1,1 @@
+packages = ["optlang", "numpy", "matplotlib"]
