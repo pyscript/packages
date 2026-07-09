@@ -547,3 +547,176 @@ help. Reach out when:
 
 Everything else - failed runs, individual packages misbehaving,
 branches that need redoing - is part of the normal job.
+
+## Limitations and cost - an honest reflection
+
+This runbook describes a pipeline that is easy to *run* across a *huge*
+number of packages but whose output is very hard to *judge*. That is what you
+get when quantitative - packages processed, minutes elapsed - is valued
+above qualitative: whether an example teaches anybody anything.
+
+Two worlds meet here. The first is deterministic: scraping, validation,
+branch creation. Traditional runbook work. It either runs or it breaks, and
+when it breaks it's obvious. The second is the LLM, whose output no amount of
+automated validation can vouch for. We want examples with three attributes:
+meaningful, useful and trusted. The pipeline was built on the hypothesis
+that AI would get us there quicker, easier and more accurately than
+paying developers to plan and write content. It delivered "quicker". It has
+not made any of the three attributes easier to achieve, and it has
+muddied our ability to tell whether we have achieved them at all.
+
+### What the numbers say
+
+We started with the 325 packages Pyodide officially supports. 203 came
+back with output we had enough confidence in to call content. Of those,
+a human reviewer judged 111 good enough in the browser to become pull
+requests. 92 consumed reviewer attention and produced nothing.
+
+The low survival rate is also a misleading one, because "worked in the
+browser" was never the bar. The educational quality of those 111 has not
+been assessed. We know they execute. Executing is a precondition for
+being useful, not a demonstration of it. So of meaningful, useful and
+trusted, the pipeline has produced evidence for none - only for the
+thing that must be true before any of the three can be checked: does it run?
+That's easy to check but, on its own, worth nothing.
+
+### The shape of the work
+
+Writing a good example is reflective craft. You learn enough of the
+package to reveal something interesting and useful about it, and the learning
+is where the value lies. Reviewing two hundred machine-drafted examples
+is not that. It is auditing, at the machine's tempo, of content that
+looks plausible but may not be.
+
+That is a cost that's easy to miss. 
+
+Here's a concrete example: the prompt tells the model to put
+the package imports at the top of the first example, where a reader will
+see them. It frequently buries them in `setup.py` instead, where they
+run invisibly. The example still executes. It parses, it produces
+output, it passes every validator we have. It is also useless as
+teaching, because the one line showing you how to reach the library has
+been hidden. Nothing catches this but a human reading with attention -
+and the reviewer must read *every* example that way, because there is no
+telling in advance which ones are affected.
+
+Cory Doctorow has a name for this, borrowed from automation theory: the
+*reverse centaur*. A centaur is a person assisted by a machine that
+shoulders something onerous. A reverse centaur is a machine assisted by
+a person, who works at the machine's pace and carries the blame when the
+machine is wrong. His example is a freelancer commissioned to write ten
+"best of summer" listicles on a short deadline. Everyone understood the
+job was not to write them but to supervise a chatbot, and nobody costed
+the fact that checking ten lists of fifteen items is slow, laborious
+human work. The pieces went out full of hallucinations nobody caught.
+Step 5 of this runbook has the same shape.
+
+### On "quicker"
+
+We have not measured wall-clock time end to end,
+review included. Until someone does, "quicker" is an impression formed
+watching `run_llm.py` finish, not a fact. The `[NEEDS REVIEW]` marker in
+step 4 is the pipeline quietly admitting it knows when it has produced
+work of which it is unconfident.
+
+I tried to close the loop - a second LLM pass to check and refine the
+first, hoping accuracy could be automated away. Writing a prompt that
+reliably yields accurate technical content across a multitude of diverse
+packages turns out to be very hard,
+and a human has to check the result regardless. We would have added a
+step, a cost, and a second source of plausible error, and removed
+nothing.
+
+## Resolutions considered
+
+Two obvious moves, both of which fail.
+
+**Replace review with automated tests.** We validate that Python parses.
+We don't validate that it runs in a browser and produces output. A non-trivial
+headless Playwright runner in CI would catch missing modules, wrong
+signatures, output that never appears, and is worth building for its own
+sake. It does not save the reviewer. Someone still reads every example
+that passes, because passing was never the goal, and someone still
+investigates every example that fails. The work is merely re-sorted, not
+removed. The `setup.py` problem is invisible to any test we could write:
+the code is correct, but the pedagogy is wrong.
+
+**Harvest rather than generate.** Almost every package on PyPI already
+ships examples - README snippets, docstrings, `examples/` directories.
+Maintainer-written, known-correct, already licensed. Why not reuse them?
+Because they must run *in the browser*. Most of these packages don't
+know that's possible, and their docs assume an environment we are not
+in. Harvesting gives us correct code that is presented in a way that doesn't
+fit the shape of browser based examples.
+
+Which leaves an uncomfortable conclusion. No automation available to us
+removes the human judgement, because the human judgement *is* the most valuable
+outcome we're aiming for. Meaningful, useful, trusted - each a judgement,
+and none of them exists in a system that often cannot and only accidentally
+makes such judgements.
+
+## What we should do
+
+**Target by usage, not availability.** Weighting by popularity - Anaconda
+download counts, or similar - was always the plan; we started from
+Pyodide's supported list because it existed. A hundred hand-written
+examples covering what people actually import would be unambiguously
+good, and cost less human attention than the 92 dead ends we have
+already paid for. Not generating at scale saves AI time and effort by
+declining to spend it on work it is unsuited to.
+
+**Publish provenance, in three tiers.** `[NEEDS REVIEW]` currently
+appears in the operator's terminal and stays there. Show it. In `api/`
+and on the site:
+
+- `verified` - human-authored, or human-reviewed for educational quality.
+- `tested` - machine-generated, executes correctly in the browser.
+- `unreviewed` - machine-generated, parses only.
+
+Our 111 are `tested`. None are `verified`, and we shouldn't imply
+otherwise. It costs a small schema change. It turns an invisible quality
+problem into a visible one, and a visible quality problem is an
+invitation to engage and improve things.
+
+## Crowd sourcing (and its limits)
+
+Which brings me to crowd-sourcing - from which I have both long term experience
+and scars. I've contributed to OpenStreetMap since 2008 and Wikipedia
+since 2004, and both make me *more* cautious, not less.
+
+What both get right is granularity. The barrier to a first contribution
+is small. Our `examples/<package>/` layout - three small
+files per example - is already at the right grain, and that is a real
+strength of what's been built. **The seed examples may turn out to be
+worth more as scaffolding for first contributions than as actual content.**
+
+What both also show is where the crowd doesn't go. In Wikipedia and
+OpenStreetMap alike, rural coverage is systematically worse: fewer local
+contributors, more bot-generated filler. Anyone who has mapped rural
+Britain knows this. The crowd turns up for London or Edinburgh but does not
+turn up for Upper Piddlington, somewhere in the back of beyond.
+
+Substitute "twelve downloads a month" for "rural". The crowd will turn
+up for popular packages like `pandas`. Perhaps this is even what we want?
+
+So the proposal is narrower than "crowd-source it".
+
+Crowd-sourcing serves the head of the distribution, where the examples
+matter most because that's where the users are. Provenance labelling
+serves the tail, honestly. And the relationship between human and
+machine changes from an AI with a human bolted on
+as quality assurance, and becomes a drafting tool for collaboratively crafted
+examples.
+
+Same tech, different social arrangement. What the tool does matters far less
+than who it does it for, and who it does it to.
+
+That inversion - from AI-first, which this pipeline embodies, to
+human-first, which it could serve - is the change of posture I'm
+proposing. It isn't a rejection of the work described here. The pipeline
+is well-tested and its deterministic parts are genuinely useful. This is more a
+reflection about where in the process the machine belongs. The crux is simple:
+we set out to build something that would generate trust and meaning at scale,
+yet trust and meaning are the things that cannot be generated by AI, for
+trust and meaning only emerge through human interactions. This is the most
+important lesson we can draw from this work.
