@@ -1,7 +1,15 @@
 {
     "status": "green",
-    "notes": "Great news! The package `sniffio` is [officially supported](https://pyodide.org/en/stable/usage/packages-in-pyodide.html) in the latest Pyodide release used by PyScript.\n\nTo use it in PyScript simply add it to the `packages` section of your TOML configuration like this:\n\n```\npackages = [\"sniffio\" ]\n```\n\nOr if you're using a JSON configuration, like this:\n\n```\n{\n    packages: [\"sniffio\"]\n }\n```\n\nRead more about using packages in PyScript [in our documentation](https://docs.pyscript.net/latest/user-guide/configuration/#packages).\n\nSpecifically, the following versions of the package are available for the following Pyodide releases:\n\nPyodide version: package name (version) (PyScript Version)\n\n* 314.0.0: sniffio (1.3.1)\n* 0.29.4: sniffio (1.3.1)\n* 0.29.3: sniffio (1.3.1) ([PyScript 2026.3.1](https://pyscript.net/releases/2026.3.1/))\n* 0.29.2: sniffio (1.3.1)\n* 0.29.1: sniffio (1.3.1) ([PyScript 2026.1.1](https://pyscript.net/releases/2026.1.1/))\n* 0.29.0: sniffio (1.3.1) ([PyScript 2025.11.1](https://pyscript.net/releases/2025.11.1/))\n* 0.28.3: sniffio (1.3.1)\n* 0.28.2: sniffio (1.3.1)\n* 0.28.1: sniffio (1.3.1) ([PyScript 2025.8.1](https://pyscript.net/releases/2025.8.1/))\n* 0.28.0: sniffio (1.3.1)\n* 0.27.7: sniffio (1.3.1) ([PyScript 2025.7.3](https://pyscript.net/releases/2025.7.3/))\n* 0.27.6: sniffio (1.3.1) ([PyScript 2025.5.1](https://pyscript.net/releases/2025.5.1/))\n* 0.27.5: sniffio (1.3.1)",
+    "notes": "Great news! The package `sniffio` is [officially supported](https://pyodide.org/en/stable/usage/packages-in-pyodide.html) in the latest Pyodide release used by PyScript.\n\nTo use it in PyScript simply add it to the `packages` section of your TOML configuration like this:\n\n```\npackages = [\"sniffio\" ]\n```\n\nOr if you're using a JSON configuration, like this:\n\n```\n{\n    packages: [\"sniffio\"]\n }\n```\n\nRead more about using packages in PyScript [in our documentation](https://docs.pyscript.net/latest/user-guide/configuration/#packages).\n\nSpecifically, the following versions of the package are available for the following Pyodide releases:\n\nPyodide version: package name (version) (PyScript Version)\n\n* 314.0.2: sniffio (1.3.1)\n* 314.0.1: sniffio (1.3.1)\n* 314.0.0: sniffio (1.3.1)\n* 0.29.4: sniffio (1.3.1)\n* 0.29.3: sniffio (1.3.1) ([PyScript 2026.3.1](https://pyscript.net/releases/2026.3.1/))\n* 0.29.2: sniffio (1.3.1)\n* 0.29.1: sniffio (1.3.1) ([PyScript 2026.1.1](https://pyscript.net/releases/2026.1.1/))\n* 0.29.0: sniffio (1.3.1) ([PyScript 2025.11.1](https://pyscript.net/releases/2025.11.1/))\n* 0.28.3: sniffio (1.3.1)\n* 0.28.2: sniffio (1.3.1)\n* 0.28.1: sniffio (1.3.1) ([PyScript 2025.8.1](https://pyscript.net/releases/2025.8.1/))\n* 0.28.0: sniffio (1.3.1)\n* 0.27.7: sniffio (1.3.1) ([PyScript 2025.7.3](https://pyscript.net/releases/2025.7.3/))\n* 0.27.6: sniffio (1.3.1) ([PyScript 2025.5.1](https://pyscript.net/releases/2025.5.1/))\n* 0.27.5: sniffio (1.3.1)",
     "pyodide_versions": {
+        "314.0.2": {
+            "package_version": "1.3.1",
+            "pyscript_version": "unknown"
+        },
+        "314.0.1": {
+            "package_version": "1.3.1",
+            "pyscript_version": "unknown"
+        },
         "314.0.0": {
             "package_version": "1.3.1",
             "pyscript_version": "unknown"
@@ -56,7 +64,38 @@
         }
     },
     "updated_by": "automated script",
-    "updated_at": "2026-06-23T10:56:21.882453+00:00",
+    "updated_at": "2026-07-09T15:26:01.830521+00:00",
     "summary": "Sniff out which async library your code is running under",
-    "examples": []
+    "examples": [
+        {
+            "title": "Detect Async Library",
+            "config": {
+                "packages": [
+                    "sniffio"
+                ]
+            },
+            "code": "\"\"\"\nSniffio is a tiny library with a single job: tell you which async\nframework is currently running your coroutine. This matters when\nyou're writing library code that wants to support multiple async\nruntimes (asyncio, trio, curio, ...) without forcing the caller to\nconfigure anything.\n\nDocs: https://sniffio.readthedocs.io\n\"\"\"\nfrom IPython.core.display import display, HTML\n\nimport asyncio\nimport sniffio\nfrom sniffio import current_async_library, AsyncLibraryNotFoundError\n\n\nheading(\"1. Sniffing from inside a running coroutine\")\nnote(\n    \"Inside an async function we can ask sniffio which library is \"\n    \"currently driving the event loop. Here we run under asyncio, \"\n    \"so that's what it reports.\"\n)\n\n\nasync def whats_running():\n    library = current_async_library()\n    return library\n\n\ndetected = asyncio.run(whats_running())\ndisplay(HTML(f\"<p>Detected async library: <strong>{detected}</strong></p>\"), append=True)\n\n\nheading(\"2. Sniffing outside of any async context\")\nnote(\n    \"If no async library is running, sniffio raises \"\n    \"AsyncLibraryNotFoundError. This is how you'd notice that you \"\n    \"were called from plain synchronous code.\"\n)\n\ntry:\n    current_async_library()\nexcept AsyncLibraryNotFoundError as exc:\n    note(f\"Got expected error: <code>{type(exc).__name__}: {exc}</code>\")\n",
+            "setup": "\"\"\"Shim setup for the first example. Includes the full IPython shim.\"\"\"\nimport sys\nimport types\nimport js\nfrom pyscript import window, HTML, display as _display\n\njs.alert = window.alert\n\n\ndef display(*args, **kwargs):\n    return _display(\n        *args, **kwargs, target=__pyscript_display_target__,\n    )\n\n\nipython = types.ModuleType(\"IPython\")\ncore = types.ModuleType(\"IPython.core\")\ncore_display = types.ModuleType(\"IPython.core.display\")\ncore_display.display = display\ncore_display.HTML = HTML\nipython.core = core\ncore.display = core_display\nipython.version_info = (9, 0, 2, '')\nipython.get_ipython = lambda: None\nipython.display = core_display\nsys.modules[\"IPython\"] = ipython\nsys.modules[\"IPython.core\"] = core\nsys.modules[\"IPython.core.display\"] = core_display\nsys.modules[\"IPython.display\"] = core_display\n\n\ndef heading(text, level=2):\n    display(HTML(f\"<h{level}>{text}</h{level}>\"), append=True)\n\n\ndef note(text):\n    display(HTML(f\"<p>{text}</p>\"), append=True)\n"
+        },
+        {
+            "title": "Dispatching On Runtime",
+            "config": {
+                "packages": [
+                    "sniffio"
+                ]
+            },
+            "code": "# ---------------------------------------------------------------------\n# Picking an implementation at runtime based on the detected library.\n# ---------------------------------------------------------------------\n\nheading(\"Writing one API that adapts to multiple async runtimes\")\nnote(\n    \"A common pattern: a library function that wants to call \"\n    \"<code>asyncio.sleep</code> when it's running under asyncio, \"\n    \"<code>trio.sleep</code> under trio, and so on. Sniffio lets \"\n    \"you branch on the answer without your callers having to tell \"\n    \"you anything.\"\n)\n\n\nasync def portable_sleep(seconds):\n    \"\"\"Sleep using whichever async library is currently running.\"\"\"\n    library = current_async_library()\n    if library == \"asyncio\":\n        await asyncio.sleep(seconds)\n        return f\"slept {seconds}s via asyncio.sleep\"\n    elif library == \"trio\":\n        # Imported lazily so we only pay for what we use.\n        import trio\n        await trio.sleep(seconds)\n        return f\"slept {seconds}s via trio.sleep\"\n    elif library == \"curio\":\n        import curio\n        await curio.sleep(seconds)\n        return f\"slept {seconds}s via curio.sleep\"\n    else:\n        raise RuntimeError(f\"Unsupported async library: {library}\")\n\n\nasync def demo():\n    note(\"Calling our portable helper from an asyncio task...\")\n    result = await portable_sleep(0.05)\n    return result\n\n\noutcome = asyncio.run(demo())\ndisplay(HTML(f\"<p>Result: <strong>{outcome}</strong></p>\"), append=True)\n\nnote(\n    \"The same <code>portable_sleep</code> function would work \"\n    \"unchanged under <code>trio.run(...)</code> or \"\n    \"<code>curio.run(...)</code>. That's the whole pitch: write \"\n    \"the dispatch once, support every runtime.\"\n)\n",
+            "setup": "\"\"\"Setup for the dispatch example. Mirrors the names from cell 1.\"\"\"\nimport js\nfrom pyscript import window, HTML, display as _display\n\njs.alert = window.alert\n\n\ndef display(*args, **kwargs):\n    return _display(*args, **kwargs, target=__pyscript_display_target__)\n\n\ndef heading(text, level=2):\n    display(HTML(f\"<h{level}>{text}</h{level}>\"), append=True)\n\n\ndef note(text):\n    display(HTML(f\"<p>{text}</p>\"), append=True)\n\n\nimport asyncio\nimport sniffio\nfrom sniffio import current_async_library, AsyncLibraryNotFoundError\n"
+        },
+        {
+            "title": "Custom Async Runtime",
+            "config": {
+                "packages": [
+                    "sniffio"
+                ]
+            },
+            "code": "# ---------------------------------------------------------------------\n# Teaching sniffio about a brand-new async library.\n# ---------------------------------------------------------------------\n\nheading(\"Making your own coroutine runner discoverable\")\nnote(\n    \"If you build a new async runtime, you can make sniffio \"\n    \"report it by setting <code>sniffio.thread_local.name</code> \"\n    \"to your library's name while a coroutine is running. \"\n    \"Sniffio checks this thread-local first, before any built-in \"\n    \"detection. We'll simulate a tiny runtime called \"\n    \"<em>tinyloop</em> to show the idea.\"\n)\n\n\ndef tinyloop_run(coro):\n    \"\"\"A toy coroutine driver that announces itself to sniffio.\"\"\"\n    previous = thread_local.name\n    thread_local.name = \"tinyloop\"\n    try:\n        # Step the coroutine to completion. A real event loop would\n        # schedule callbacks here; we just send None until it stops.\n        try:\n            while True:\n                coro.send(None)\n        except StopIteration as stop:\n            return stop.value\n    finally:\n        thread_local.name = previous\n\n\nasync def report():\n    return current_async_library()\n\n\ndetected = tinyloop_run(report())\ndisplay(HTML(f\"<p>While running under tinyloop, sniffio reports: \"\n             f\"<strong>{detected}</strong></p>\"), append=True)\n\nnote(\n    \"After <code>tinyloop_run</code> returns, the thread-local is \"\n    \"restored, so subsequent code outside any runtime sees the \"\n    \"original state again.\"\n)\n\ndisplay(HTML(f\"<p>Current thread_local.name after run: \"\n             f\"<code>{thread_local.name!r}</code></p>\"), append=True)\n",
+            "setup": "\"\"\"Setup for the custom-runtime example.\"\"\"\nimport js\nfrom pyscript import window, HTML, display as _display\n\njs.alert = window.alert\n\n\ndef display(*args, **kwargs):\n    return _display(*args, **kwargs, target=__pyscript_display_target__)\n\n\ndef heading(text, level=2):\n    display(HTML(f\"<h{level}>{text}</h{level}>\"), append=True)\n\n\ndef note(text):\n    display(HTML(f\"<p>{text}</p>\"), append=True)\n\n\nimport sniffio\nfrom sniffio import current_async_library, thread_local\n"
+        }
+    ]
 }

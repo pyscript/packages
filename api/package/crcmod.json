@@ -1,14 +1,22 @@
 {
     "status": "green",
-    "notes": "Great news! The package `crcmod` is [officially supported](https://pyodide.org/en/stable/usage/packages-in-pyodide.html) in the latest Pyodide release used by PyScript.\n\nTo use it in PyScript simply add it to the `packages` section of your TOML configuration like this:\n\n```\npackages = [\"crcmod\" ]\n```\n\nOr if you're using a JSON configuration, like this:\n\n```\n{\n    packages: [\"crcmod\"]\n }\n```\n\nRead more about using packages in PyScript [in our documentation](https://docs.pyscript.net/latest/user-guide/configuration/#packages).\n\nSpecifically, the following versions of the package are available for the following Pyodide releases:\n\nPyodide version: package name (version) (PyScript Version)\n\n* 314.0.0: crcmod (1.7)",
+    "notes": "Great news! The package `crcmod` is [officially supported](https://pyodide.org/en/stable/usage/packages-in-pyodide.html) in the latest Pyodide release used by PyScript.\n\nTo use it in PyScript simply add it to the `packages` section of your TOML configuration like this:\n\n```\npackages = [\"crcmod\" ]\n```\n\nOr if you're using a JSON configuration, like this:\n\n```\n{\n    packages: [\"crcmod\"]\n }\n```\n\nRead more about using packages in PyScript [in our documentation](https://docs.pyscript.net/latest/user-guide/configuration/#packages).\n\nSpecifically, the following versions of the package are available for the following Pyodide releases:\n\nPyodide version: package name (version) (PyScript Version)\n\n* 314.0.2: crcmod (1.7)\n* 314.0.1: crcmod (1.7)\n* 314.0.0: crcmod (1.7)",
     "pyodide_versions": {
+        "314.0.2": {
+            "package_version": "1.7",
+            "pyscript_version": "unknown"
+        },
+        "314.0.1": {
+            "package_version": "1.7",
+            "pyscript_version": "unknown"
+        },
         "314.0.0": {
             "package_version": "1.7",
             "pyscript_version": "unknown"
         }
     },
     "updated_by": "automated script",
-    "updated_at": "2026-06-23T10:56:00.249216+00:00",
+    "updated_at": "2026-07-09T15:25:43.512694+00:00",
     "summary": "CRC Generator",
     "examples": []
 }

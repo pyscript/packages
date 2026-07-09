@@ -1,14 +1,22 @@
 {
     "status": "green",
-    "notes": "Great news! The package `librt` is [officially supported](https://pyodide.org/en/stable/usage/packages-in-pyodide.html) in the latest Pyodide release used by PyScript.\n\nTo use it in PyScript simply add it to the `packages` section of your TOML configuration like this:\n\n```\npackages = [\"librt\" ]\n```\n\nOr if you're using a JSON configuration, like this:\n\n```\n{\n    packages: [\"librt\"]\n }\n```\n\nRead more about using packages in PyScript [in our documentation](https://docs.pyscript.net/latest/user-guide/configuration/#packages).\n\nSpecifically, the following versions of the package are available for the following Pyodide releases:\n\nPyodide version: package name (version) (PyScript Version)\n\n* 314.0.0: librt (0.8.1)",
+    "notes": "Great news! The package `librt` is [officially supported](https://pyodide.org/en/stable/usage/packages-in-pyodide.html) in the latest Pyodide release used by PyScript.\n\nTo use it in PyScript simply add it to the `packages` section of your TOML configuration like this:\n\n```\npackages = [\"librt\" ]\n```\n\nOr if you're using a JSON configuration, like this:\n\n```\n{\n    packages: [\"librt\"]\n }\n```\n\nRead more about using packages in PyScript [in our documentation](https://docs.pyscript.net/latest/user-guide/configuration/#packages).\n\nSpecifically, the following versions of the package are available for the following Pyodide releases:\n\nPyodide version: package name (version) (PyScript Version)\n\n* 314.0.2: librt (0.8.1)\n* 314.0.1: librt (0.8.1)\n* 314.0.0: librt (0.8.1)",
     "pyodide_versions": {
+        "314.0.2": {
+            "package_version": "0.8.1",
+            "pyscript_version": "unknown"
+        },
+        "314.0.1": {
+            "package_version": "0.8.1",
+            "pyscript_version": "unknown"
+        },
         "314.0.0": {
             "package_version": "0.8.1",
             "pyscript_version": "unknown"
         }
     },
     "updated_by": "automated script",
-    "updated_at": "2026-06-23T10:56:06.822046+00:00",
+    "updated_at": "2026-07-09T15:25:48.521671+00:00",
     "summary": "Mypyc runtime library",
     "examples": []
 }

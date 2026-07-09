@@ -1,7 +1,15 @@
 {
     "status": "green",
-    "notes": "Great news! The package `python-flirt` is [officially supported](https://pyodide.org/en/stable/usage/packages-in-pyodide.html) in the latest Pyodide release used by PyScript.\n\nTo use it in PyScript simply add it to the `packages` section of your TOML configuration like this:\n\n```\npackages = [\"python-flirt\" ]\n```\n\nOr if you're using a JSON configuration, like this:\n\n```\n{\n    packages: [\"python-flirt\"]\n }\n```\n\nRead more about using packages in PyScript [in our documentation](https://docs.pyscript.net/latest/user-guide/configuration/#packages).\n\nSpecifically, the following versions of the package are available for the following Pyodide releases:\n\nPyodide version: package name (version) (PyScript Version)\n\n* 314.0.0: python-flirt (0.9.10)\n* 0.29.4: python-flirt (0.9.10)",
+    "notes": "Great news! The package `python-flirt` is [officially supported](https://pyodide.org/en/stable/usage/packages-in-pyodide.html) in the latest Pyodide release used by PyScript.\n\nTo use it in PyScript simply add it to the `packages` section of your TOML configuration like this:\n\n```\npackages = [\"python-flirt\" ]\n```\n\nOr if you're using a JSON configuration, like this:\n\n```\n{\n    packages: [\"python-flirt\"]\n }\n```\n\nRead more about using packages in PyScript [in our documentation](https://docs.pyscript.net/latest/user-guide/configuration/#packages).\n\nSpecifically, the following versions of the package are available for the following Pyodide releases:\n\nPyodide version: package name (version) (PyScript Version)\n\n* 314.0.2: python-flirt (0.9.10)\n* 314.0.1: python-flirt (0.9.10)\n* 314.0.0: python-flirt (0.9.10)\n* 0.29.4: python-flirt (0.9.10)",
     "pyodide_versions": {
+        "314.0.2": {
+            "package_version": "0.9.10",
+            "pyscript_version": "unknown"
+        },
+        "314.0.1": {
+            "package_version": "0.9.10",
+            "pyscript_version": "unknown"
+        },
         "314.0.0": {
             "package_version": "0.9.10",
             "pyscript_version": "unknown"
@@ -12,7 +20,7 @@
         }
     },
     "updated_by": "automated script",
-    "updated_at": "2026-06-23T10:56:17.793431+00:00",
+    "updated_at": "2026-07-09T15:25:58.065714+00:00",
     "summary": "A Python library for parsing, compiling, and matching Fast Library Identification and Recognition Technology (FLIRT) signatures.",
     "examples": []
 }

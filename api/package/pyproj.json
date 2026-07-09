@@ -1,7 +1,15 @@
 {
     "status": "green",
-    "notes": "Great news! The package `pyproj` is [officially supported](https://pyodide.org/en/stable/usage/packages-in-pyodide.html) in the latest Pyodide release used by PyScript.\n\nTo use it in PyScript simply add it to the `packages` section of your TOML configuration like this:\n\n```\npackages = [\"pyproj\" ]\n```\n\nOr if you're using a JSON configuration, like this:\n\n```\n{\n    packages: [\"pyproj\"]\n }\n```\n\nRead more about using packages in PyScript [in our documentation](https://docs.pyscript.net/latest/user-guide/configuration/#packages).\n\nSpecifically, the following versions of the package are available for the following Pyodide releases:\n\nPyodide version: package name (version) (PyScript Version)\n\n* 314.0.0: pyproj (3.7.2)\n* 0.29.4: pyproj (3.7.2)\n* 0.29.3: pyproj (3.7.2) ([PyScript 2026.3.1](https://pyscript.net/releases/2026.3.1/))\n* 0.29.2: pyproj (3.7.2)\n* 0.27.7: pyproj (3.6.1) ([PyScript 2025.7.3](https://pyscript.net/releases/2025.7.3/))\n* 0.27.6: pyproj (3.6.1) ([PyScript 2025.5.1](https://pyscript.net/releases/2025.5.1/))\n* 0.27.5: pyproj (3.6.1)\n* 0.27.4: pyproj (3.6.1)\n* 0.27.3: pyproj (3.6.1) ([PyScript 2025.3.1](https://pyscript.net/releases/2025.3.1/))\n* 0.27.2: pyproj (3.6.1) ([PyScript 2025.2.4](https://pyscript.net/releases/2025.2.4/))\n* 0.27.1: pyproj (3.6.1)\n* 0.27.0: pyproj (3.6.1)",
+    "notes": "Great news! The package `pyproj` is [officially supported](https://pyodide.org/en/stable/usage/packages-in-pyodide.html) in the latest Pyodide release used by PyScript.\n\nTo use it in PyScript simply add it to the `packages` section of your TOML configuration like this:\n\n```\npackages = [\"pyproj\" ]\n```\n\nOr if you're using a JSON configuration, like this:\n\n```\n{\n    packages: [\"pyproj\"]\n }\n```\n\nRead more about using packages in PyScript [in our documentation](https://docs.pyscript.net/latest/user-guide/configuration/#packages).\n\nSpecifically, the following versions of the package are available for the following Pyodide releases:\n\nPyodide version: package name (version) (PyScript Version)\n\n* 314.0.2: pyproj (3.7.2)\n* 314.0.1: pyproj (3.7.2)\n* 314.0.0: pyproj (3.7.2)\n* 0.29.4: pyproj (3.7.2)\n* 0.29.3: pyproj (3.7.2) ([PyScript 2026.3.1](https://pyscript.net/releases/2026.3.1/))\n* 0.29.2: pyproj (3.7.2)\n* 0.27.7: pyproj (3.6.1) ([PyScript 2025.7.3](https://pyscript.net/releases/2025.7.3/))\n* 0.27.6: pyproj (3.6.1) ([PyScript 2025.5.1](https://pyscript.net/releases/2025.5.1/))\n* 0.27.5: pyproj (3.6.1)\n* 0.27.4: pyproj (3.6.1)\n* 0.27.3: pyproj (3.6.1) ([PyScript 2025.3.1](https://pyscript.net/releases/2025.3.1/))\n* 0.27.2: pyproj (3.6.1) ([PyScript 2025.2.4](https://pyscript.net/releases/2025.2.4/))\n* 0.27.1: pyproj (3.6.1)\n* 0.27.0: pyproj (3.6.1)",
     "pyodide_versions": {
+        "314.0.2": {
+            "package_version": "3.7.2",
+            "pyscript_version": "unknown"
+        },
+        "314.0.1": {
+            "package_version": "3.7.2",
+            "pyscript_version": "unknown"
+        },
         "314.0.0": {
             "package_version": "3.7.2",
             "pyscript_version": "unknown"
@@ -52,7 +60,7 @@
         }
     },
     "updated_by": "automated script",
-    "updated_at": "2026-06-23T10:56:16.082038+00:00",
+    "updated_at": "2026-07-09T15:25:56.468489+00:00",
     "summary": "Python interface to PROJ (cartographic projections and coordinate transformations library)",
     "examples": []
 }
