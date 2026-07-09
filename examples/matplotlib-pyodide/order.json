@@ -1,0 +1,5 @@
+[
+    "html5_canvas_backend",
+    "wasm_backend_static",
+    "subplots_and_styles"
+]
