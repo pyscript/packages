@@ -1,0 +1,5 @@
+[
+    "heif_pillow_plugin",
+    "heif_to_numpy",
+    "heif_hdr_and_thumbnails"
+]
