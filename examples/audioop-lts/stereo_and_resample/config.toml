@@ -1,0 +1,1 @@
+packages = ["audioop-lts", "numpy", "matplotlib"]
