@@ -1,0 +1,1 @@
+packages = ["pythermocalcdb-nasa", "pythermodb-settings", "pyreactlab-core", "numpy", "matplotlib"]
