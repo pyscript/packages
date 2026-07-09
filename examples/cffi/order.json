@@ -1,0 +1,5 @@
+[
+    "abi_mode_libc",
+    "cdata_pointers_and_arrays",
+    "callbacks_into_python"
+]
